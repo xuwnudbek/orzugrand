@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ColorHexTo {
-  static Color mainTextColor = hexToColor("#1A1817");
+class HexColor {
+  static Color primaryTextColor = hexToColor("#1A1817");
+  static Color secondaryTextColor = hexToColor("#FFFFFF");
+
   static Color scaffoldBackgroundColor = hexToColor("#FFFFFF");
+
+  static Color primaryColor = hexToColor("#FF6600");
+  static Color secondaryColor = hexToColor("#14A23C");
+
+  static Color errorColor = hexToColor("#FF0000");
 }
 
 Color hexToColor(String hex) {
