@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/widgets/button.dart';
 import 'package:orzugrand/utils/widgets/register/register_form.dart';
 import 'package:orzugrand/utils/widgets/register/title.dart';
 
@@ -11,7 +12,8 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.white,
+        backgroundColor: Colors.white,
         toolbarHeight: 70,
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_new_rounded),
@@ -21,14 +23,12 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
             RegisterTitle(),
             SizedBox(height: 25),
             RegisterForm(),
-            SizedBox(height: 25),
-
           ],
         ),
       ),

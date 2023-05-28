@@ -8,8 +8,6 @@ class RegisterProvider extends ChangeNotifier {
   TextEditingController addrController = TextEditingController();
 
   List city = [
-    "Farg'ona",
-    "Namangan",
-    "Samanrqand",
+    
   ];
 }
