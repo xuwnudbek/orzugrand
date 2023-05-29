@@ -437,22 +437,7 @@ class RegisterForm extends StatelessWidget {
             ],
           ),
           SizedBox(height: 45),
-          CustomButton(
-            title: Text(
-              "ЗАРЕГЕСТРИРОВАТЬСЯ",
-              style: TextStyle(
-                color: HexColor.secondaryTextColor,
-              ),
-            ),
-            height: 40,
-            bgColor: HexColor.primaryColor,
-            onTap: () {
-              print("Registration");
-              //Logic with provider
-              // Get.to();
-            },
-          ),
-          SizedBox(height: 20),
+          
         ],
       ),
     );

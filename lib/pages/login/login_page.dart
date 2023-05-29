@@ -29,7 +29,6 @@ class LoginPage extends StatelessWidget {
             LoginTitle(),
             SizedBox(height: 30),
             LoginForm(),
-            SizedBox(height: 40),
             CustomButton(
               title: Text(
                 "ВОЙТИ",

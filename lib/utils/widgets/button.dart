@@ -5,13 +5,15 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.title,
     required this.height,
-    required this.bgColor,
+    this.bgColor,
+    this.borderColor,
     required this.onTap,
   });
 
   final Widget title;
   final double height;
-  final Color bgColor;
+  final Color? bgColor;
+  final Color? borderColor;
   final Function onTap;
 
   @override
@@ -23,7 +25,10 @@ class CustomButton extends StatelessWidget {
       child: Container(
         height: height,
         decoration: BoxDecoration(
-          color: bgColor,
+          border: Border.all(
+            color: borderColor != null ? borderColor! : Colors.white,
+          ),
+          color: bgColor != null ? bgColor : null,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(

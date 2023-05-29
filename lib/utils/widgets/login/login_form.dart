@@ -65,6 +65,7 @@ class LoginForm extends StatelessWidget {
           ],
         ),
         SizedBox(height: 20),
+        //Password Field
         Row(
           children: [
             Expanded(
@@ -130,6 +131,33 @@ class LoginForm extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: 45),
+        //Reset Password
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Забыли пароль ?",
+              style: TextStyle(color: HexColor.primaryColor),
+            ),
+            SizedBox(width: 10),
+            GestureDetector(
+              onTap: () {
+                print("Reset pass");
+              },
+              child: Row(
+                children: [
+                  Text(
+                    "Восстановить",
+                    style: TextStyle(color: HexColor.secondaryColor),
+                  ),
+                  SvgPicture.asset("assets/images/right_arrow.svg"),
+                ],
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 30),
       ],
     );
   }

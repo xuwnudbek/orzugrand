@@ -12,6 +12,8 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+        scrolledUnderElevation: 0,
         surfaceTintColor: Colors.white,
         backgroundColor: Colors.white,
         toolbarHeight: 70,
