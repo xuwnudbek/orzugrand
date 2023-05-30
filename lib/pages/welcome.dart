@@ -10,7 +10,7 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:orzugrand/pages/home/components/new_orders_tab/provider/new_order_provider.dart';
-import 'package:orzugrand/pages/home/provider/home_provider.dart';
+
+import 'package:orzugrand/pages/order_page/components/new_orders_tab/provider/new_order_provider.dart';
+import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:provider/provider.dart';
 
@@ -22,13 +23,13 @@ class _HomeTabbarState extends State<HomeTabbar> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    var homeProvider = Provider.of<HomeProvider>(context, listen: false);
-    var orderProvider = Provider.of<NewOrderProvider>(context, listen: false);
+    var hp = Provider.of<OrderProvider>(context, listen: false);
+    var np = Provider.of<NewOrderProvider>(context, listen: false);
 
     return TabBar(
       controller: _tabController,
       onTap: (index) {
-        homeProvider.onChangeTab(index);
+        hp.onChangeTab(index);
       },
       isScrollable: false,
       indicatorColor: Colors.transparent,
@@ -39,7 +40,7 @@ class _HomeTabbarState extends State<HomeTabbar> with TickerProviderStateMixin {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: HexColor.primaryColor),
-            color: homeProvider.tabIndex == 0 ? HexColor.primaryColor : null,
+            color: hp.tabIndex == 0 ? HexColor.primaryColor : null,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +51,7 @@ class _HomeTabbarState extends State<HomeTabbar> with TickerProviderStateMixin {
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   // color: HexColor.secondaryTextColor,
-                  color: homeProvider.tabIndex == 0
+                  color: hp.tabIndex == 0
                       ? HexColor.secondaryTextColor
                       : HexColor.primaryColor,
                 ),
@@ -58,16 +59,16 @@ class _HomeTabbarState extends State<HomeTabbar> with TickerProviderStateMixin {
               SizedBox(width: 10),
               CircleAvatar(
                 maxRadius: 15,
-                backgroundColor: homeProvider.tabIndex == 0
+                backgroundColor: hp.tabIndex == 0
                     ? HexColor.secondaryTextColor
                     : HexColor.primaryColor,
                 child: Text(
-                  "${orderProvider.orderCount}+",
+                  "${np.orderCount}+",
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
                     // color: HexColor.secondaryTextColor,
-                    color: homeProvider.tabIndex == 0
+                    color: hp.tabIndex == 0
                         ? HexColor.primaryColor
                         : HexColor.secondaryTextColor,
                   ),
@@ -81,7 +82,7 @@ class _HomeTabbarState extends State<HomeTabbar> with TickerProviderStateMixin {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: HexColor.secondaryColor),
-            color: homeProvider.tabIndex == 1 ? HexColor.secondaryColor : null,
+            color: hp.tabIndex == 1 ? HexColor.secondaryColor : null,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +93,7 @@ class _HomeTabbarState extends State<HomeTabbar> with TickerProviderStateMixin {
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                   // color: HexColor.secondaryTextColor,
-                  color: homeProvider.tabIndex == 1
+                  color: hp.tabIndex == 1
                       ? HexColor.secondaryTextColor
                       : HexColor.secondaryColor,
                 ),

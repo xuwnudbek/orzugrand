@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:orzugrand/pages/home/home_page.dart';
-import 'package:orzugrand/pages/home/provider/home_provider.dart';
-import 'package:orzugrand/pages/welcome.dart';
+import 'package:orzugrand/pages/order_page/order_page.dart';
+import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
 import 'package:orzugrand/utils/widgets/custom_navigation_bar/bottom_navigation.dart';
+import 'package:orzugrand/utils/widgets/custom_navigation_bar/provider/navbar_provider.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
@@ -10,14 +10,13 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var homeProvider = Provider.of<HomeProvider>(context);
+    var op = Provider.of<OrderProvider>(context);
+    var nbp = Provider.of<NavbarProvider>(context);
 
     return Scaffold(
       body: SafeArea(
-        // child: HomePag
-        // 
-        e(),
-        child: Welcome(),
+        child: nbp.currentPage,
+        // child: Welcome(),
       ),
       bottomNavigationBar: CustomBottomBar(),
     );

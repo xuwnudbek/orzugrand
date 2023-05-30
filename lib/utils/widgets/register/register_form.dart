@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/button.dart';
 
@@ -437,7 +438,20 @@ class RegisterForm extends StatelessWidget {
             ],
           ),
           SizedBox(height: 45),
-          
+          //Registration Button
+          CustomButton(
+            title: Text(
+              "ЗАРЕГЕСТРИРОВАТЬСЯ",
+              style: TextStyle(
+                color: HexColor.secondaryTextColor,
+              ),
+            ),
+            onTap: () {
+              print("Registration");
+            },
+            height: 40,
+            bgColor: HexColor.primaryColor,
+          ),
         ],
       ),
     );

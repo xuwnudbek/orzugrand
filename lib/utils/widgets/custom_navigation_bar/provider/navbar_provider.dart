@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:orzugrand/pages/done_page/done_page.dart';
+import 'package:orzugrand/pages/order_page/order_page.dart';
 
 class NavbarProvider extends ChangeNotifier {
+  List<Widget> pages = [
+    OrderPage(),
+    DonePage(),
+  ];
+
   List<Item> items = [
     Item(
       svgPath: "assets/images/navbar/order.svg",
@@ -40,6 +47,8 @@ class NavbarProvider extends ChangeNotifier {
     _selectedIndex = index;
     notifyListeners();
   }
+
+  Widget get currentPage => pages[_selectedIndex];
 }
 
 class Item {

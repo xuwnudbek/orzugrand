@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:orzugrand/models/order.dart';
+import 'package:orzugrand/pages/order_page/components/new_orders_tab/new_order_page.dart';
+import 'package:orzugrand/pages/order_page/components/performed_orders_tab/performed_order_page.dart';
 
-class HomeProvider extends ChangeNotifier {
+class OrderProvider extends ChangeNotifier {
+  List<Widget> screens = [
+    NewOrderPage(),
+    PerformedOrderPage(),
+  ];
+
   List<Order> orders = [
     Order.fromMap({
       "client": "Арзикулов Жамшид Умидович",
@@ -18,6 +25,8 @@ class HomeProvider extends ChangeNotifier {
 
   int _tabIndex = 0;
   int get tabIndex => _tabIndex;
+
+  get currentTap => screens[_tabIndex];
 
   void onChangeTab(int index) {
     _tabIndex = index;
