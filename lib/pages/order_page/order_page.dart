@@ -12,10 +12,10 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var homeProvider = Provider.of<OrderProvider>(context);
+    var orderProvider = Provider.of<OrderProvider>(context);
 
     return Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.only(left: 20, top: 20, right: 20),
       child: Column(
         children: [
           CustomTitle(
@@ -56,8 +56,12 @@ class OrderPage extends StatelessWidget {
           ),
           SizedBox(height: 20),
           HomeTabbar(),
-          SizedBox(height: 20),
-          homeProvider.currentTap,
+          SizedBox(height: 10),
+          Expanded(
+            child: SingleChildScrollView(
+              child: orderProvider.currentTap,
+            ),
+          ),
         ],
       ),
     );

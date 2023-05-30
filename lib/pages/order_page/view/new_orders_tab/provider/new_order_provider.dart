@@ -12,7 +12,7 @@ class NewOrderProvider extends ChangeNotifier {
       "city": "Фергана",
       "clientComment": "Нужно доставить после работы по времени после 17:00",
       "contractNumber": 123456,
-      "product": ["Картошка", "Морковь", "Лук"],
+      "product": "Двухкамерный холодильник 290л Samsung RB29FERNDSA стальной",
     }),
     Order.fromMap({
       "addPhone": "+998919992614",
@@ -23,7 +23,7 @@ class NewOrderProvider extends ChangeNotifier {
       "city": "Фергана",
       "clientComment": "Нужно доставить после работы по времени после 17:00",
       "contractNumber": 987654,
-      "product": ["Картошка", "Морковь", "Лук"],
+      "product": "Комбинированная плита Artel Milagro 50 00-K белый",
     }),
   ];
 

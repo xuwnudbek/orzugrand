@@ -7,6 +7,7 @@ import 'package:orzugrand/pages/order_page/view/details/provider/order_details_p
 import 'package:orzugrand/pages/order_page/view/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/pages/order_page/view/performed_orders_tab/provider/performed_order_provider.dart';
 import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
+import 'package:orzugrand/pages/other_page.dart/provider/other_provider.dart';
 import 'package:orzugrand/pages/register/register_page.dart';
 import 'package:orzugrand/pages/welcome.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PerformedOrderProvider()),
         ChangeNotifierProvider(create: (context) => NavbarProvider()),
         ChangeNotifierProvider(create: (context) => OrderDetailsProvider()),
+        ChangeNotifierProvider(create: (context) => OtherProvider()),
       ],
       child: GetMaterialApp(
         routes: {

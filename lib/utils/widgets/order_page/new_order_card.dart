@@ -5,6 +5,7 @@ import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/pages/order_page/view/details/order_details_page.dart';
 import 'package:orzugrand/pages/order_page/view/details/provider/order_details_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/functions/main_function.dart';
 import 'package:provider/provider.dart';
 
 class NewOrderCard extends StatelessWidget {
@@ -19,7 +20,7 @@ class NewOrderCard extends StatelessWidget {
       onTap: () {
         Get.to(
           () => OrderDetailsPage(),
-          arguments: {"order": order},
+          arguments: {"order": order, "isPrimary": true},
         );
         //Logic
       },
@@ -115,10 +116,6 @@ class NewOrderCard extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(
-                      () => OrderDetailsPage(),
-                      arguments: {"order": order},
-                    );
                     //Logic
                   },
                   child: Container(
@@ -139,7 +136,7 @@ class NewOrderCard extends StatelessWidget {
                         SizedBox(width: 7),
                         SvgPicture.asset(
                           "assets/images/deliver-car.svg",
-                          width: 20,
+                          width: 25,
                         ),
                       ],
                     ),
@@ -150,6 +147,7 @@ class NewOrderCard extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
+                          MainFunction.redirectCall(order.phone);
                           print("Call to client: ${order.phone}");
                         },
                         color: HexColor.secondaryColor,
@@ -162,6 +160,10 @@ class NewOrderCard extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
+                          Get.to(
+                            () => OrderDetailsPage(),
+                            arguments: {"order": order, "isPrimary": true},
+                          );
                           print("Forward to Order");
                         },
                         style: ButtonStyle(

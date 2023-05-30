@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:orzugrand/pages/done_page/done_page.dart';
 import 'package:orzugrand/pages/order_page/order_page.dart';
+import 'package:orzugrand/pages/other_page.dart/other_page.dart';
+import 'package:orzugrand/pages/profile_page/profile_page.dart';
+import 'package:orzugrand/pages/returned_page/returned_page.dart';
 
 class NavbarProvider extends ChangeNotifier {
   List<Widget> pages = [
     OrderPage(),
     DonePage(),
+    ReturnedPage(),
+    OtherPage(),
+    ProfilePage(),
   ];
 
   List<Item> items = [

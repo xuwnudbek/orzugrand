@@ -1,5 +1,5 @@
 class Order {
-  final List<String> product;
+  final String product;
   final int contractNumber;
   final String client;
   final String city;
@@ -30,7 +30,7 @@ class Order {
       city: data["city"],
       clientComment: data["clientComment"],
       contractNumber: data["contractNumber"],
-      product: List<String>.from(data["product"]),
+      product: data["product"],
       orderedDate: data["orderedDate"],
       phone: data["phone"],
     );

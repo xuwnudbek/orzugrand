@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/view/details/provider/order_details_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/order_page/order_details_card.dart';
+import 'package:orzugrand/utils/widgets/button.dart';
+import 'package:orzugrand/utils/widgets/circle_button.dart';
+import 'package:orzugrand/utils/widgets/order_page/order_dropdown.dart';
 import 'package:orzugrand/utils/widgets/order_page/order_page_title.dart';
-import 'package:provider/provider.dart';
+import 'package:orzugrand/utils/widgets/order_page/selfie_card.dart';
 
-class OrderDetailsPage extends StatelessWidget {
-  OrderDetailsPage({super.key});
+class SelfiePage extends StatelessWidget {
+  const SelfiePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     Order order = Get.arguments["order"];
-    bool isPrimary = Get.arguments["isPrimary"] ?? false;
-    // var odp = Provider.of<OrderDetailsProvider>(context);
-
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20.0),
@@ -24,46 +22,24 @@ class OrderDetailsPage extends StatelessWidget {
           children: [
             SizedBox(height: 30),
             CustomTitle(
-              prefix: SvgPicture.asset(
-                "assets/images/order-list.svg",
-                color:
-                    isPrimary ? HexColor.primaryColor : HexColor.secondaryColor,
-              ),
+              prefix: SvgPicture.asset("assets/images/order-list.svg"),
               title: Row(
                 children: [
                   Text(
                     "Заявка №",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(width: 10),
+                  SizedBox(width: 7),
                   Text(
                     "${order.contractNumber}",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: isPrimary
-                          ? HexColor.primaryColor
-                          : HexColor.secondaryColor,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
-              suffix: GestureDetector(
-                onTap: () {},
-                child: CircleAvatar(
-                  maxRadius: 20,
-                  backgroundColor: isPrimary
-                      ? HexColor.primaryColor
-                      : HexColor.secondaryColor,
-                  child: Icon(
-                    Icons.notifications_none_rounded,
-                    size: 22,
-                    color: HexColor.secondaryTextColor,
-                  ),
-                ),
+              suffix: CircleButton(
+                child: SvgPicture.asset("assets/images/send.svg"),
+                color: HexColor.primaryColor,
+                radius: 40,
               ),
             ),
             SizedBox(height: 20),
@@ -71,8 +47,10 @@ class OrderDetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () => Get.back(),
-                  child: Icon(Icons.arrow_back_rounded),
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Icon(Icons.arrow_back),
                 ),
                 Container(
                   child: Row(
@@ -81,9 +59,7 @@ class OrderDetailsPage extends StatelessWidget {
                         "Клиент: ",
                         style: TextStyle(
                           fontSize: 16,
-                          color: isPrimary
-                              ? HexColor.primaryColor
-                              : HexColor.secondaryColor,
+                          color: HexColor.primaryColor,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -100,13 +76,35 @@ class OrderDetailsPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    OrderDetailsCard(isPrimary, true),
-                    
+                    OrderDropdown(),
+                    SizedBox(height: 10),
+                    SelfieCard(),
+                    SizedBox(height: 20),
+                    CustomButton(
+                      title: Row(
+                        children: [
+                          Text(
+                            "Сохранить / Выполненно",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: HexColor.secondaryTextColor,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      bgColor: HexColor.secondaryColor,
+                      height: 40,
+                      onTap: () {
+                        print("Saved");
+                      },
+                    ),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),

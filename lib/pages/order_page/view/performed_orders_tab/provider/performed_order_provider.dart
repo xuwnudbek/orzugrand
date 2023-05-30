@@ -12,7 +12,7 @@ class PerformedOrderProvider extends ChangeNotifier {
       "city": "Фергана",
       "clientComment": "Нужно доставить после работы по времени после 17:00",
       "contractNumber": 123456,
-      "product": ["Картошка", "Морковь", "Лук"],
+      "product": "Двухкамерный холодильник 290л Samsung RB29FERNDSA стальной",
     }),
   ];
 }

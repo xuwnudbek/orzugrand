@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DonePage extends StatelessWidget {
-  const DonePage({super.key});
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Готовые"),
+      child: Text("Профиль"),
     );
   }
 }

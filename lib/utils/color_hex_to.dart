@@ -7,6 +7,7 @@ class HexColor {
   static Color scaffoldBackgroundColor = hexToColor("#FFFFFF");
 
   static Color primaryColor = hexToColor("#FF6600");
+  static Color blue = hexToColor("#3036C3");
   static Color secondaryColor = hexToColor("#14A23C");
 
   static Color errorColor = hexToColor("#FF0000");

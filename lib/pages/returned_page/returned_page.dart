@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DonePage extends StatelessWidget {
-  const DonePage({super.key});
+class ReturnedPage extends StatelessWidget {
+  const ReturnedPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Готовые"),
+      child: Text("Возврат"),
     );
   }
 }

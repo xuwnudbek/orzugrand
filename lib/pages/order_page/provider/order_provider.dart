@@ -19,7 +19,7 @@ class OrderProvider extends ChangeNotifier {
       "city": "Фергана",
       "clientComment": "Нужно доставить после работы по времени после 17:00",
       "contractNumber": 123456,
-      "product": ["Картошка", "Морковь", "Лук"],
+      "product": "Комбинированная плита Artel Milagro 50 00-K белый",
     }),
   ];
 

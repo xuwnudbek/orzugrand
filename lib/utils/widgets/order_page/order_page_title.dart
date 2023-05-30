@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:orzugrand/utils/color_hex_to.dart';
 
 class CustomTitle extends StatelessWidget {
   CustomTitle({
@@ -21,18 +19,9 @@ class CustomTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Flexible(
-          flex: 1,
-          child: prefix,
-        ),
-        Flexible(
-          flex: 5,
-          child: title
-        ),
-        Flexible(
-          flex: 1,
-          child: suffix
-        ),
+        Flexible(flex: 1, child: prefix),
+        Flexible(flex: 5, child: title),
+        Flexible(flex: 1, child: suffix),
       ],
     );
   }

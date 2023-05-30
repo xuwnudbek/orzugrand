@@ -9,12 +9,8 @@ class NewOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var np = Provider.of<NewOrderProvider>(context);
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: np.orders.map((e) => NewOrderCard(order: e)).toList(),
-        ),
-      ),
+    return Column(
+      children: np.orders.map((e) => NewOrderCard(order: e)).toList(),
     );
   }
 }
