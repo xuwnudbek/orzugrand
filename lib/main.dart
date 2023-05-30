@@ -8,6 +8,7 @@ import 'package:orzugrand/pages/main_page.dart';
 import 'package:orzugrand/pages/register/register_page.dart';
 import 'package:orzugrand/pages/welcome.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/widgets/custom_navigation_bar/provider/navbar_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => HomeProvider()),
         ChangeNotifierProvider(create: (context) => NewOrderProvider()),
-        ChangeNotifierProvider(create: (context) => PerformedOrderProvider()),
+        // ChangeNotifierProvider(create: (context) => PerformedOrderProvider()),
         ChangeNotifierProvider(create: (context) => NavbarProvider())
       ],
       child: GetMaterialApp(

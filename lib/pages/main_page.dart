@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orzugrand/pages/home/home_page.dart';
 import 'package:orzugrand/pages/home/provider/home_provider.dart';
-import 'package:orzugrand/pages/order_page.dart/order_page.dart';
+import 'package:orzugrand/pages/welcome.dart';
 import 'package:orzugrand/utils/widgets/custom_navigation_bar/bottom_navigation.dart';
-import 'package:orzugrand/utils/widgets/navbar/bottom_navigation.dart';
 import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
@@ -14,7 +13,12 @@ class MainPage extends StatelessWidget {
     var homeProvider = Provider.of<HomeProvider>(context);
 
     return Scaffold(
-      body: OrderPage(), //Welcome(),
+      body: SafeArea(
+        // child: HomePag
+        // 
+        e(),
+        child: Welcome(),
+      ),
       bottomNavigationBar: CustomBottomBar(),
     );
   }

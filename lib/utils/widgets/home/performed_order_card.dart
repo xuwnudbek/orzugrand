@@ -62,7 +62,7 @@ class PerformedOrderCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "${order.address}",
+                  "${order.addressDelivery}",
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
