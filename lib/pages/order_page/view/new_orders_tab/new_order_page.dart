@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orzugrand/pages/order_page/components/new_orders_tab/provider/new_order_provider.dart';
+import 'package:orzugrand/pages/order_page/view/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/utils/widgets/order_page/new_order_card.dart';
 import 'package:provider/provider.dart';
 

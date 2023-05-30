@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 
 import 'package:orzugrand/pages/login/login_page.dart';
 import 'package:orzugrand/pages/main_page.dart';
-import 'package:orzugrand/pages/order_page/components/details/provider/order_details_provider.dart';
-import 'package:orzugrand/pages/order_page/components/new_orders_tab/provider/new_order_provider.dart';
-import 'package:orzugrand/pages/order_page/components/performed_orders_tab/provider/performed_order_provider.dart';
+import 'package:orzugrand/pages/order_page/view/details/provider/order_details_provider.dart';
+import 'package:orzugrand/pages/order_page/view/new_orders_tab/provider/new_order_provider.dart';
+import 'package:orzugrand/pages/order_page/view/performed_orders_tab/provider/performed_order_provider.dart';
 import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
 import 'package:orzugrand/pages/register/register_page.dart';
 import 'package:orzugrand/pages/welcome.dart';

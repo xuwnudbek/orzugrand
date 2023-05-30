@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/components/details/provider/order_details_provider.dart';
+import 'package:orzugrand/pages/order_page/view/details/provider/order_details_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:provider/provider.dart';
 
