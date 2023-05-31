@@ -44,10 +44,14 @@ class OtherTasksPage extends StatelessWidget {
           SizedBox(height: 20),
           OtherTabbar(),
           SizedBox(height: 20),
-          Consumer<OtherTasksProvider>(
-            builder: (context, provider, child) {
-              return provider.currentTab;
-            },
+          Expanded(
+            child: SingleChildScrollView(
+              child: Consumer<OtherTasksProvider>(
+                builder: (context, provider, child) {
+                  return provider.currentTab;
+                },
+              ),
+            ),
           ),
         ],
       ),

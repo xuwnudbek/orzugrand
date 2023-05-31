@@ -9,6 +9,12 @@ class DoneTaskProvider extends ChangeNotifier {
       "contractedDate": "12.03.2023",
       "phone": "+998991234567",
     }),
+    Task.fromMap({
+      "task": "Привезти мебель со склада",
+      "address": "Фергана Азизова 12 д кв 35",
+      "contractedDate": "12.03.2023",
+      "phone": "+998991234567",
+    }),
   ];
 
   List<Task> get getDoneTasks => _doneTasks;
