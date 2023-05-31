@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
-import 'package:orzugrand/pages/order_page/views/details/provider/order_details_provider.dart';
+import 'package:orzugrand/pages/other_tasks_page/views/task_details/task_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
-import 'package:provider/provider.dart';
 
-class NewOrderCard extends StatelessWidget {
-  const NewOrderCard({super.key, required this.order});
-  final Order order;
+class TaskDetailsCard extends StatelessWidget {
+  const TaskDetailsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var odp = Provider.of<OrderDetailsProvider>(context);
-
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => OrderDetailsPage(),
-          arguments: {"order": order, "isPrimary": true},
+          () => TaskDetailsPage(),
         );
         //Logic
       },
@@ -42,7 +36,7 @@ class NewOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Клиент:",
+                    "Зада ча:",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -50,7 +44,7 @@ class NewOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${order.client}",
+                    "",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -59,58 +53,58 @@ class NewOrderCard extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 5),
-            //Address
-            Container(
-              width: Get.size.width * 0.5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Адрес:",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
-                    ),
-                  ),
-                  Text(
-                    "${order.addressDelivery}",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            //Ordered date
-            Container(
-              width: Get.size.width * 0.5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Дата создания договора:",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
-                    ),
-                  ),
-                  Text(
-                    "${order.orderedDate}",
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            //Order Button
+            // SizedBox(height: 5),
+            // //Address
+            // Container(
+            //   width: Get.size.width * 0.5,
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       Text(
+            //         "Адрес:",
+            //         style: TextStyle(
+            //           fontSize: 13,
+            //           fontWeight: FontWeight.w500,
+            //           color: HexColor.primaryColor,
+            //         ),
+            //       ),
+            //       Text(
+            //         "${order.addressDelivery}",
+            //         style: TextStyle(
+            //           fontSize: 13,
+            //           fontWeight: FontWeight.w500,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 10),
+            // //Ordered date
+            // Container(
+            //   width: Get.size.width * 0.5,
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       Text(
+            //         "Дата создания договора:",
+            //         style: TextStyle(
+            //           fontSize: 13,
+            //           fontWeight: FontWeight.w500,
+            //           color: HexColor.primaryColor,
+            //         ),
+            //       ),
+            //       Text(
+            //         "${order.orderedDate}",
+            //         style: TextStyle(
+            //           fontSize: 13,
+            //           fontWeight: FontWeight.w500,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // SizedBox(height: 20),
+            // //Order Button
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -147,8 +141,8 @@ class NewOrderCard extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          MainFunction.redirectCall(order.phone);
-                          print("Call to client: ${order.phone}");
+                          MainFunction.redirectCall("+998902902614");
+                          print("Call to client: ");
                         },
                         color: HexColor.secondaryColor,
                         style: ButtonStyle(
@@ -162,7 +156,7 @@ class NewOrderCard extends StatelessWidget {
                         onPressed: () {
                           Get.to(
                             () => OrderDetailsPage(),
-                            arguments: {"order": order, "isPrimary": true},
+                            // arguments: {"order": order, "isPrimary": true},
                           );
                           print("Forward to Order");
                         },

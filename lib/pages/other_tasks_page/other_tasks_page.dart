@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:orzugrand/pages/other_tasks_page/provider/other_tasks_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/order_page/order_page_title.dart';
-import 'package:orzugrand/utils/widgets/order_page/tab_bar.dart';
+import 'package:orzugrand/utils/widgets/other_page/tab_bar.dart';
+import 'package:provider/provider.dart';
 
-class OtherPage extends StatelessWidget {
-  const OtherPage({super.key});
+class OtherTasksPage extends StatelessWidget {
+  const OtherTasksPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,13 @@ class OtherPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          HomeTabbar(),
+          OtherTabbar(),
+          SizedBox(height: 20),
+          Consumer<OtherTasksProvider>(
+            builder: (context, provider, child) {
+              return provider.currentTab;
+            },
+          ),
         ],
       ),
     );

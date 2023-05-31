@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
@@ -12,7 +11,7 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var orderProvider = Provider.of<OrderProvider>(context);
+    var orderProvider = Provider.of<OrderProvider>(context, listen: false);
 
     return Padding(
       padding: EdgeInsets.only(left: 20, top: 20, right: 20),
@@ -55,11 +54,14 @@ class OrderPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          HomeTabbar(),
+          OrderTabbar(),
           SizedBox(height: 10),
           Expanded(
             child: SingleChildScrollView(
-              child: orderProvider.currentTap,
+              child: Consumer<OrderProvider>(
+                  builder: (context, orderProider, child) {
+                return orderProvider.currentTap;
+              }),
             ),
           ),
         ],

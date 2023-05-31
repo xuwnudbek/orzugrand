@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/view/new_orders_tab/new_order_page.dart';
-import 'package:orzugrand/pages/order_page/view/performed_orders_tab/performed_order_page.dart';
+import 'package:orzugrand/pages/order_page/views/new_orders_tab/new_order_page.dart';
+import 'package:orzugrand/pages/order_page/views/performed_orders_tab/performed_order_page.dart';
 
 class OrderProvider extends ChangeNotifier {
   List<Widget> screens = [

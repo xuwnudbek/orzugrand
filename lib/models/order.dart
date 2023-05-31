@@ -22,7 +22,6 @@ class Order {
   });
 
   factory Order.fromMap(Map<String, dynamic> data) {
-    print(data);
     return Order(
       addPhone: data["addPhone"],
       addressDelivery: data["addressDelivery"],

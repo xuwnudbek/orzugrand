@@ -17,6 +17,10 @@ class OrderDropdown extends StatelessWidget {
         color: HexColor.primaryColor.withOpacity(0.07),
       ),
       child: ExpansionTile(
+        initiallyExpanded: false,
+        shape: const RoundedRectangleBorder(
+          side: BorderSide(color: Colors.transparent),
+        ),
         collapsedShape: BeveledRectangleBorder(),
         controlAffinity: ListTileControlAffinity.trailing,
         title: Text(

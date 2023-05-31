@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:orzugrand/models/order.dart';
+import 'package:orzugrand/models/task.dart';
 import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
-import 'package:orzugrand/pages/order_page/views/details/provider/order_details_provider.dart';
+import 'package:orzugrand/pages/other_tasks_page/views/task_details/task_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
-import 'package:provider/provider.dart';
 
-class NewOrderCard extends StatelessWidget {
-  const NewOrderCard({super.key, required this.order});
-  final Order order;
+class DoneTaskCard extends StatelessWidget {
+  DoneTaskCard({super.key, required this.task, required this.color});
+  Task task;
+  Color color;
 
   @override
   Widget build(BuildContext context) {
-    var odp = Provider.of<OrderDetailsProvider>(context);
-
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => OrderDetailsPage(),
-          arguments: {"order": order, "isPrimary": true},
+          () => TaskDetailsPage(),
+          arguments: {"task": task, "color": HexColor.blue},
         );
         //Logic
       },
@@ -30,7 +28,7 @@ class NewOrderCard extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: HexColor.primaryColor.withOpacity(0.1),
+          color: HexColor.blue.withOpacity(0.1),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,15 +40,15 @@ class NewOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Клиент:",
+                    "Зада ча:",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
+                      color: HexColor.blue,
                     ),
                   ),
                   Text(
-                    "${order.client}",
+                    "${task.task}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -71,11 +69,11 @@ class NewOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
+                      color: HexColor.blue,
                     ),
                   ),
                   Text(
-                    "${order.addressDelivery}",
+                    "${task.address}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -96,11 +94,11 @@ class NewOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
+                      color: HexColor.blue,
                     ),
                   ),
                   Text(
-                    "${order.orderedDate}",
+                    "${task.contractedDate}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -122,7 +120,7 @@ class NewOrderCard extends StatelessWidget {
                     height: 40,
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(
-                      color: HexColor.primaryColor,
+                      color: HexColor.blue,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -147,13 +145,13 @@ class NewOrderCard extends StatelessWidget {
                     children: [
                       IconButton(
                         onPressed: () {
-                          MainFunction.redirectCall(order.phone);
-                          print("Call to client: ${order.phone}");
+                          MainFunction.redirectCall("+998902902614");
+                          print("Call to client: ");
                         },
-                        color: HexColor.secondaryColor,
+                        color: HexColor.blue,
                         style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(
-                            HexColor.secondaryColor,
+                            HexColor.blue,
                           ),
                         ),
                         icon: SvgPicture.asset("assets/images/phone.svg"),
@@ -162,13 +160,13 @@ class NewOrderCard extends StatelessWidget {
                         onPressed: () {
                           Get.to(
                             () => OrderDetailsPage(),
-                            arguments: {"order": order, "isPrimary": true},
+                            // arguments: {"order": order, "isPrimary": true},
                           );
                           print("Forward to Order");
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(
-                            HexColor.secondaryColor,
+                            HexColor.blue,
                           ),
                         ),
                         icon: Icon(
