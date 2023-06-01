@@ -8,112 +8,110 @@ class UserStatistics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: HexColor.primaryColor,
-                      maxRadius: 30,
-                      child: Text(
-                        "12",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: HexColor.secondaryTextColor,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      "Выполнено сегодня",
-                      textAlign: TextAlign.center,
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: HexColor.primaryColor,
+                    maxRadius: 30,
+                    child: Text(
+                      "12",
                       style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: HexColor.secondaryTextColor,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: CircleAvatar(
-                  maxRadius: 60,
-                  backgroundColor: Colors.grey,
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: HexColor.secondaryColor,
-                      maxRadius: 30,
-                      child: Text(
-                        "44",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: HexColor.secondaryTextColor,
-                        ),
-                      ),
+                  ),
+                  Text(
+                    "Выполнено сегодня",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
                     ),
-                    Text(
-                      "Выполнено за текущий месяц",
-                      softWrap: true,
-                      textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: CircleAvatar(
+                maxRadius: 60,
+                backgroundColor: Colors.grey,
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundColor: HexColor.secondaryColor,
+                    maxRadius: 30,
+                    child: Text(
+                      "44",
                       style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        color: HexColor.secondaryTextColor,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    "Выполнено за текущий месяц",
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-          SizedBox(height: 5),
-          Text(
-            "Владимир Владимирович",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
             ),
+          ],
+        ),
+        SizedBox(height: 5),
+        Text(
+          "Владимир Владимирович",
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
           ),
-          Text(
-            "Должность",
-            style: TextStyle(
-              fontSize: 12,
-              color: HexColor.primaryColor,
-              fontWeight: FontWeight.w600,
-            ),
+        ),
+        Text(
+          "Должность",
+          style: TextStyle(
+            fontSize: 12,
+            color: HexColor.primaryColor,
+            fontWeight: FontWeight.w600,
           ),
-          SizedBox(height: 15),
-          SizedBox(
-            width: Get.size.width * 0.5,
-            child: CustomButton(
-              title: Text(
-                "Служба доставки",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: HexColor.secondaryTextColor,
-                ),
+        ),
+        SizedBox(height: 15),
+        SizedBox(
+          width: Get.size.width * 0.5,
+          child: CustomButton(
+            title: Text(
+              "Служба доставки",
+              style: TextStyle(
+                fontSize: 12,
+                color: HexColor.secondaryTextColor,
               ),
-              bgColor: HexColor.primaryColor,
-              height: 40,
-              onTap: () {},
             ),
+            bgColor: HexColor.primaryColor,
+            height: 40,
+            onTap: () {},
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

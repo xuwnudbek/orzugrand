@@ -11,8 +11,6 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var orderProvider = Provider.of<OrderProvider>(context, listen: false);
-
     return Padding(
       padding: EdgeInsets.only(left: 20, top: 20, right: 20),
       child: Column(
@@ -25,7 +23,7 @@ class OrderPage extends StatelessWidget {
                 Text(
                   "Заявки",
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -45,9 +43,8 @@ class OrderPage extends StatelessWidget {
               child: CircleAvatar(
                 maxRadius: 20,
                 backgroundColor: HexColor.primaryColor,
-                child: Icon(
-                  Icons.notifications_none_rounded,
-                  size: 22,
+                child: SvgPicture.asset(
+                  "assets/images/notification.svg",
                   color: HexColor.secondaryTextColor,
                 ),
               ),
@@ -59,9 +56,8 @@ class OrderPage extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Consumer<OrderProvider>(
-                  builder: (context, orderProider, child) {
-                return orderProvider.currentTap;
-              }),
+                builder: (context, provider, child) => provider.currentTap,
+              ),
             ),
           ),
         ],

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class HexColor {
   static Color primaryTextColor = hexToColor("#1A1817");
   static Color secondaryTextColor = hexToColor("#FFFFFF");
+  static Color darkBlue = hexToColor("#2F4156");
+  static Color darkRed = hexToColor("#D71919");
 
   static Color scaffoldBackgroundColor = hexToColor("#FFFFFF");
 

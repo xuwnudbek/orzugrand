@@ -23,11 +23,74 @@ class ProfilePage extends StatelessWidget {
           //User Opportunities
           Consumer<ProfileProvider>(
             builder: (context, provider, child) {
-              return Container(
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Row(
+              return Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: SvgPicture.asset(
+                                "assets/images/notification.svg",
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text("Оповещение"),
+                          ],
+                        ),
+                      ),
+                      Switch(
+                        activeColor: HexColor.primaryColor,
+                        inactiveThumbColor: Colors.grey,
+                        inactiveTrackColor: Colors.white,
+                        onChanged: (value) {
+                          provider.setAlertStatus = value;
+                        },
+                        value: provider.alertStatus,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: SvgPicture.asset(
+                                "assets/images/fingerprint.svg",
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text("Вход по отпечатку"),
+                          ],
+                        ),
+                      ),
+                      Switch(
+                        activeColor: HexColor.primaryColor,
+                        inactiveThumbColor: Colors.grey,
+                        inactiveTrackColor: Colors.white,
+                        onChanged: (value) {
+                          provider.setFingerPrintStatus = value;
+                        },
+                        value: provider.fingerPrintStatus,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(
+                        () => EditDataPage(),
+                        transition: Transition.cupertino,
+                        // curve: Curves.linear,
+                      );
+                    },
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
@@ -36,26 +99,27 @@ class ProfilePage extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.all(5.0),
                                 child: SvgPicture.asset(
-                                  "assets/images/notification.svg",
+                                  "assets/images/edit.svg",
                                 ),
                               ),
                               SizedBox(width: 10),
-                              Text("Оповещение"),
+                              Text("Изменить данные"),
                             ],
                           ),
                         ),
-                        Switch(
-                          activeColor: HexColor.primaryColor,
-                          inactiveThumbColor: Colors.grey,
-                          inactiveTrackColor: Colors.white,
-                          onChanged: (value) {
-                            provider.setAlertStatus = value;
-                          },
-                          value: provider.alertStatus,
-                        ),
+                        SvgPicture.asset("assets/images/arrow_right_ios.svg"),
                       ],
                     ),
-                    Row(
+                  ),
+                  SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(
+                        () => EditPassPage(),
+                        transition: Transition.cupertino,
+                      );
+                    },
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
@@ -64,86 +128,19 @@ class ProfilePage extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.all(5.0),
                                 child: SvgPicture.asset(
-                                  "assets/images/fingerprint.svg",
+                                  "assets/images/edit_pass.svg",
                                 ),
                               ),
                               SizedBox(width: 10),
-                              Text("Вход по отпечатку"),
+                              Text("Изменить данные"),
                             ],
                           ),
                         ),
-                        Switch(
-                          activeColor: HexColor.primaryColor,
-                          inactiveThumbColor: Colors.grey,
-                          inactiveTrackColor: Colors.white,
-                          onChanged: (value) {
-                            provider.setFingerPrintStatus = value;
-                          },
-                          value: provider.fingerPrintStatus,
-                        ),
+                        SvgPicture.asset("assets/images/arrow_right_ios.svg"),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(
-                          () => EditDataPage(),
-                          transition: Transition.cupertino,
-                          // curve: Curves.linear,
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(5.0),
-                                  child: SvgPicture.asset(
-                                    "assets/images/edit.svg",
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Text("Изменить данные"),
-                              ],
-                            ),
-                          ),
-                          SvgPicture.asset("assets/images/arrow_right_ios.svg"),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(
-                          () => EditPassPage(),
-                          transition: Transition.cupertino,
-                        );
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.all(5.0),
-                                  child: SvgPicture.asset(
-                                    "assets/images/edit_pass.svg",
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Text("Изменить данные"),
-                              ],
-                            ),
-                          ),
-                          SvgPicture.asset("assets/images/arrow_right_ios.svg"),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               );
             },
           ),

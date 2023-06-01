@@ -18,8 +18,8 @@ class EditDataProvider extends ChangeNotifier {
   bool _isPhoneEditable = false;
   bool _isAddressEditable = false;
 
-  bool get isPhoneEditable => isPhoneEditable;
-  bool get isAddressEditable => isAddressEditable;
+  bool get isPhoneEditable => _isPhoneEditable;
+  bool get isAddressEditable => _isAddressEditable;
 
   set changePhoneEditable(bool value) {
     _isPhoneEditable = value;

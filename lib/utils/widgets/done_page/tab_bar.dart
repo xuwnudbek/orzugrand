@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-
-import 'package:orzugrand/pages/other_tasks_page/provider/other_tasks_provider.dart';
+import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:provider/provider.dart';
 
-class OtherTabbar extends StatefulWidget {
-  const OtherTabbar({super.key});
+class DoneTabbar extends StatefulWidget {
+  const DoneTabbar({super.key});
 
   @override
-  State<OtherTabbar> createState() => _OtherTabbarState();
+  State<DoneTabbar> createState() => _DoneTabbarState();
 }
 
-class _OtherTabbarState extends State<OtherTabbar>
-    with TickerProviderStateMixin {
+class _DoneTabbarState extends State<DoneTabbar> with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -23,11 +21,11 @@ class _OtherTabbarState extends State<OtherTabbar>
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<OtherTasksProvider>(builder: (context, value, child) {
+    return Consumer<DoneProvider>(builder: (context, provider, child) {
       return TabBar(
         controller: _tabController,
         onTap: (index) {
-          value.onChangeTab(index);
+          provider.changeTabIndex = index;
         },
         isScrollable: false,
         indicatorColor: Colors.transparent,
@@ -37,36 +35,37 @@ class _OtherTabbarState extends State<OtherTabbar>
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: HexColor.blue),
-              color: value.tabIndex == 0 ? HexColor.blue : null,
+              border: Border.all(color: HexColor.darkBlue),
+              color: provider.tabIndex == 0 ? HexColor.darkBlue : null,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Новые",
+                  "Сегодня",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     // color: HexColor.secondaryTextColor,
-                    color: value.tabIndex == 0
+                    color: provider.tabIndex == 0
                         ? HexColor.secondaryTextColor
-                        : HexColor.blue,
+                        : HexColor.darkBlue,
                   ),
                 ),
                 SizedBox(width: 10),
                 CircleAvatar(
                   maxRadius: 15,
-                  backgroundColor: value.tabIndex == 0
+                  backgroundColor: provider.tabIndex == 0
                       ? HexColor.secondaryTextColor
-                      : HexColor.blue,
+                      : HexColor.darkBlue,
                   child: Text(
-                    "5+",
+                    "12+",
                     style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
-                      color: value.tabIndex == 0
-                          ? HexColor.blue
+                      // color: HexColor.secondaryTextColor,
+                      color: provider.tabIndex == 0
+                          ? HexColor.darkBlue
                           : HexColor.secondaryTextColor,
                     ),
                   ),
@@ -79,21 +78,21 @@ class _OtherTabbarState extends State<OtherTabbar>
             height: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: HexColor.blue),
-              color: value.tabIndex == 1 ? HexColor.blue : null,
+              border: Border.all(color: HexColor.darkBlue),
+              color: provider.tabIndex == 1 ? HexColor.darkBlue : null,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Выполняются",
+                  "За все время",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     // color: HexColor.secondaryTextColor,
-                    color: value.tabIndex == 1
+                    color: provider.tabIndex == 1
                         ? HexColor.secondaryTextColor
-                        : HexColor.blue,
+                        : HexColor.darkBlue,
                   ),
                 ),
               ],

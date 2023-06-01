@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orzugrand/pages/done_page/provider/all_time_orders_provider.dart';
+import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
+import 'package:orzugrand/pages/done_page/provider/today_order_provider.dart';
 import 'package:orzugrand/pages/login/login_page.dart';
 import 'package:orzugrand/pages/main_page.dart';
 import 'package:orzugrand/pages/order_page/views/details/provider/order_details_provider.dart';
@@ -13,6 +16,9 @@ import 'package:orzugrand/pages/profile_page/provider/profile_provider.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_data_page/provider/edit_data_provider.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_pass_page/provider/edit_pass_provider.dart';
 import 'package:orzugrand/pages/register/register_page.dart';
+import 'package:orzugrand/pages/returned_page/provider/new_returned_order_provider.dart';
+import 'package:orzugrand/pages/returned_page/provider/performed_returned_order_provider.dart';
+import 'package:orzugrand/pages/returned_page/provider/return_provider.dart';
 import 'package:orzugrand/pages/welcome.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_navigation_bar/provider/navbar_provider.dart';
@@ -41,6 +47,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProfileProvider()),
         ChangeNotifierProvider(create: (context) => EditDataProvider()),
         ChangeNotifierProvider(create: (context) => EditPassProvider()),
+        ChangeNotifierProvider(create: (context) => DoneProvider()),
+        ChangeNotifierProvider(create: (context) => TodaysOrdersProvider()),
+        ChangeNotifierProvider(create: (context) => AllTimeOrdersProvider()),
+        ChangeNotifierProvider(create: (context) => ReturnProvider()),
+        ChangeNotifierProvider(create: (context) => NewReturnedOrderProvider()),
+        ChangeNotifierProvider(
+            create: (context) => PerformedReturnedOrderProvider()),
       ],
       child: GetMaterialApp(
         routes: {

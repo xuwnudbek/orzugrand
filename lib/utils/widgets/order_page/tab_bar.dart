@@ -67,7 +67,7 @@ class _OrderTabbarState extends State<OrderTabbar>
                   child: Text(
                     "${np.orderCount}+",
                     style: TextStyle(
-                      fontSize: 13,
+                      fontSize: 10,
                       fontWeight: FontWeight.w500,
                       // color: HexColor.secondaryTextColor,
                       color: orderProvider.tabIndex == 0
