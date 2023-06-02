@@ -106,7 +106,6 @@ class OrderDetailsPage extends StatelessWidget {
                 child: Column(
                   children: [
                     OrderDetailsCard(isPrimary, true),
-                    
                   ],
                 ),
               ),

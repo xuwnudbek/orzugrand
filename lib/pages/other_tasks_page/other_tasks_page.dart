@@ -12,7 +12,8 @@ class OtherTasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+
       child: Column(
         children: [
           CustomTitle(

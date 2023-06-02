@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_data_page/provider/edit_data_provider.dart';
-import 'package:orzugrand/pages/register/provider/register_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/button.dart';
+import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/profile/user_statictic.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +26,6 @@ class EditDataPage extends StatelessWidget {
             children: [
               //User image and data
               UserStatistics(),
-              SizedBox(height: 50),
               //Data Fields
               Consumer<EditDataProvider>(builder: (context, provider, child) {
                 return Expanded(

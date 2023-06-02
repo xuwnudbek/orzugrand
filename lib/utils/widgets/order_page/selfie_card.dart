@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/button.dart';
+import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/circle_button.dart';
 
 class SelfieCard extends StatelessWidget {

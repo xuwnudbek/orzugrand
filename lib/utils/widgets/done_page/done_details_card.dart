@@ -2,19 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/views/details/provider/order_details_provider.dart';
-import 'package:orzugrand/pages/order_page/views/selfie_page/selfie_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
-import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/circle_button.dart';
-import 'package:provider/provider.dart';
 
-class OrderDetailsCard extends StatelessWidget {
-  OrderDetailsCard(this.isPrimary, this.hasButton, {super.key});
-
-  bool hasButton;
-  bool isPrimary = false;
+class DoneDetailsCard extends StatelessWidget {
+  DoneDetailsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +21,7 @@ class OrderDetailsCard extends StatelessWidget {
           margin: EdgeInsets.only(bottom: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: isPrimary
-                ? HexColor.primaryColor.withOpacity(0.07)
-                : HexColor.secondaryColor.withOpacity(0.07),
+            color: HexColor.darkBlue.withOpacity(0.1),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,9 +37,7 @@ class OrderDetailsCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.secondaryColor,
                       ),
                     ),
                     Text(
@@ -73,9 +62,7 @@ class OrderDetailsCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.secondaryColor,
                       ),
                     ),
                     Text(
@@ -100,9 +87,7 @@ class OrderDetailsCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.secondaryColor,
                       ),
                     ),
                     Text(
@@ -127,9 +112,7 @@ class OrderDetailsCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.secondaryColor,
                       ),
                     ),
                     Text(
@@ -154,9 +137,7 @@ class OrderDetailsCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.secondaryColor,
                       ),
                     ),
                     Text(
@@ -183,9 +164,7 @@ class OrderDetailsCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: isPrimary
-                                ? HexColor.primaryColor
-                                : HexColor.secondaryColor,
+                            color: HexColor.secondaryColor,
                           ),
                         ),
                         Text(
@@ -204,9 +183,7 @@ class OrderDetailsCard extends StatelessWidget {
                       child: CircleButton(
                         radius: 35,
                         child: SvgPicture.asset("assets/images/location.svg"),
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.darkBlue,
                       ),
                     ),
                   ],
@@ -226,9 +203,7 @@ class OrderDetailsCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: isPrimary
-                                ? HexColor.primaryColor
-                                : HexColor.secondaryColor,
+                            color: HexColor.secondaryColor,
                           ),
                         ),
                         Text(
@@ -248,9 +223,7 @@ class OrderDetailsCard extends StatelessWidget {
                       child: CircleButton(
                         radius: 35,
                         child: SvgPicture.asset("assets/images/phone.svg"),
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.darkBlue,
                       ),
                     ),
                   ],
@@ -270,9 +243,7 @@ class OrderDetailsCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: isPrimary
-                                ? HexColor.primaryColor
-                                : HexColor.secondaryColor,
+                            color: HexColor.secondaryColor,
                           ),
                         ),
                         Text(
@@ -292,9 +263,7 @@ class OrderDetailsCard extends StatelessWidget {
                       child: CircleButton(
                         radius: 35,
                         child: SvgPicture.asset("assets/images/phone.svg"),
-                        color: isPrimary
-                            ? HexColor.primaryColor
-                            : HexColor.secondaryColor,
+                        color: HexColor.darkBlue,
                       ),
                     ),
                   ],
@@ -305,31 +274,6 @@ class OrderDetailsCard extends StatelessWidget {
           ),
         ),
         //Deliver Button
-        hasButton
-            ? CustomButton(
-                title: Row(children: [
-                  Text(
-                    isPrimary ? "Выехал к клиенту" : "Доставил",
-                    style: TextStyle(color: HexColor.secondaryTextColor),
-                  ),
-                  SizedBox(width: 7),
-                  SvgPicture.asset(
-                    "assets/images/deliver-car.svg",
-                    width: 25,
-                  )
-                ]),
-                bgColor:
-                    isPrimary ? HexColor.primaryColor : HexColor.secondaryColor,
-                height: 40,
-                onTap: () {
-                  if (!isPrimary) {
-                    Get.to(
-                      () => SelfiePage(),
-                      arguments: {"order": order},
-                    );
-                  }
-                })
-            : SizedBox.shrink(),
       ],
     );
   }

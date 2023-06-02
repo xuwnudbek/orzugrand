@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
+import 'package:orzugrand/pages/done_page/views/done_details_page.dart';
+import 'package:orzugrand/pages/returned_page/views/return_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
 
@@ -14,6 +15,14 @@ class ReturnOrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Get.to(
+          () => ReturnDetailsPage(),
+          arguments: {
+            "order": order,
+            "isNew": true,
+          },
+        );
+        print("Forward to Order");
         //Logic
       },
       child: Container(
@@ -34,7 +43,7 @@ class ReturnOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Зада ча:",
+                    "Клиент:",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -42,7 +51,7 @@ class ReturnOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "554445",
+                    "${order.client}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -67,7 +76,7 @@ class ReturnOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "asdasd asdad asdasd",
+                    "${order.addressDelivery}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -92,7 +101,7 @@ class ReturnOrderCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "asda564da6sd ",
+                    "${order.orderedDate}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -107,7 +116,8 @@ class ReturnOrderCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    
                     //Logic
                   },
                   child: Container(
@@ -153,8 +163,8 @@ class ReturnOrderCard extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           Get.to(
-                            () => OrderDetailsPage(),
-                            // arguments: {"order": order, "isPrimary": true},
+                            () => DoneDetailsPage(),
+                            arguments: {"order": order},
                           );
                           print("Forward to Order");
                         },

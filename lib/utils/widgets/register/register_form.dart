@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/button.dart';
+import 'package:orzugrand/utils/widgets/custom_button.dart';
 
 class RegisterForm extends StatelessWidget {
   RegisterForm({super.key});

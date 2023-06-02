@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
+import 'package:orzugrand/pages/done_page/views/done_details_page.dart';
 import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
@@ -14,6 +15,12 @@ class DoneOrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Get.to(
+          () => DoneDetailsPage(),
+          arguments: {
+            "order": order,
+          },
+        );
         //Logic
       },
       child: Container(
@@ -22,7 +29,7 @@ class DoneOrderCard extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: HexColor.blue.withOpacity(0.1),
+          color: HexColor.darkBlue.withOpacity(0.1),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,15 +41,15 @@ class DoneOrderCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Зада ча:",
+                    "Клиент:",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.blue,
+                      color: HexColor.secondaryColor,
                     ),
                   ),
                   Text(
-                    "554445",
+                    "${order.client}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -63,11 +70,11 @@ class DoneOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.blue,
+                      color: HexColor.secondaryColor,
                     ),
                   ),
                   Text(
-                    "asdasd asdad asdasd",
+                    "${order.addressDelivery}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -88,11 +95,11 @@ class DoneOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.blue,
+                      color: HexColor.secondaryColor,
                     ),
                   ),
                   Text(
-                    "asda564da6sd ",
+                    "${order.orderedDate}",
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
@@ -104,36 +111,36 @@ class DoneOrderCard extends StatelessWidget {
             SizedBox(height: 20),
             //Order Button
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    //Logic
-                  },
-                  child: Container(
-                    height: 40,
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: HexColor.blue,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Выехал к клиенту",
-                          style: TextStyle(color: HexColor.secondaryTextColor),
-                        ),
-                        SizedBox(width: 7),
-                        SvgPicture.asset(
-                          "assets/images/deliver-car.svg",
-                          width: 25,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () {
+                //     //Logic
+                //   },
+                //   child: Container(
+                //     height: 40,
+                //     padding: EdgeInsets.symmetric(horizontal: 15),
+                //     decoration: BoxDecoration(
+                //       color: HexColor.darkBlue,
+                //       borderRadius: BorderRadius.circular(10),
+                //     ),
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.min,
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         Text(
+                //           "Выехал к клиенту",
+                //           style: TextStyle(color: HexColor.secondaryTextColor),
+                //         ),
+                //         SizedBox(width: 7),
+                //         SvgPicture.asset(
+                //           "assets/images/deliver-car.svg",
+                //           width: 25,
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Container(
                   child: Row(
                     children: [
@@ -142,10 +149,10 @@ class DoneOrderCard extends StatelessWidget {
                           MainFunction.redirectCall("+998902902614");
                           print("Call to client: ");
                         },
-                        color: HexColor.blue,
+                        color: HexColor.darkBlue,
                         style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(
-                            HexColor.blue,
+                            HexColor.darkBlue,
                           ),
                         ),
                         icon: SvgPicture.asset("assets/images/phone.svg"),
@@ -154,13 +161,13 @@ class DoneOrderCard extends StatelessWidget {
                         onPressed: () {
                           Get.to(
                             () => OrderDetailsPage(),
-                            // arguments: {"order": order, "isPrimary": true},
+                            arguments: {"order": order, "isNew": true},
                           );
                           print("Forward to Order");
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(
-                            HexColor.blue,
+                            HexColor.darkBlue,
                           ),
                         ),
                         icon: Icon(

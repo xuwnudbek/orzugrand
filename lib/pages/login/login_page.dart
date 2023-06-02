@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/button.dart';
+import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/login/login_form.dart';
 import 'package:orzugrand/utils/widgets/login/title.dart';
 

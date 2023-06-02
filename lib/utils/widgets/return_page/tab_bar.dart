@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
 import 'package:orzugrand/pages/returned_page/provider/return_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/widgets/show_date_range.dart';
 import 'package:provider/provider.dart';
 
 class ReturnTabbar extends StatefulWidget {
@@ -44,7 +45,7 @@ class _ReturnTabbarState extends State<ReturnTabbar>
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Сегодня",
+                  "Новые",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,

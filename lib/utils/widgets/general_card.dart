@@ -1,36 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
-import 'package:orzugrand/pages/order_page/views/details/provider/order_details_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/functions/main_function.dart';
-import 'package:provider/provider.dart';
 
-class NewOrderCard extends StatelessWidget {
-  const NewOrderCard({super.key, required this.order});
+class GeneralCard extends StatelessWidget {
+  GeneralCard({
+    super.key,
+    required this.order,
+    required this.onCall,
+    required this.detailsPage,
+    required this.color,
+    this.actionButton,
+  });
+
   final Order order;
+  final Function onCall;
+  final Widget detailsPage;
+  final Color color;
+  Widget? actionButton;
 
   @override
   Widget build(BuildContext context) {
-    var odp = Provider.of<OrderDetailsProvider>(context);
-
     return GestureDetector(
-      onTap: () {
-        Get.to(
-          () => OrderDetailsPage(),
-          arguments: {"order": order, "isPrimary": true},
-        );
-        //Logic
-      },
+      onTap: () => Get.to(
+        () => detailsPage,
+        arguments: {"order": order},
+      ),
       child: Container(
         width: double.maxFinite,
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: HexColor.primaryColor.withOpacity(0.1),
+          color: color.withOpacity(0.1),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +49,7 @@ class NewOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
+                      color: color,
                     ),
                   ),
                   Text(
@@ -71,7 +74,7 @@ class NewOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
+                      color: color,
                     ),
                   ),
                   Text(
@@ -96,7 +99,7 @@ class NewOrderCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
-                      color: HexColor.primaryColor,
+                      color: color,
                     ),
                   ),
                   Text(
@@ -114,62 +117,26 @@ class NewOrderCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    //Logic
-                  },
-                  child: Container(
-                    height: 40,
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    decoration: BoxDecoration(
-                      color: HexColor.primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Выехал к клиенту",
-                          style: TextStyle(color: HexColor.secondaryTextColor),
-                        ),
-                        SizedBox(width: 7),
-                        SvgPicture.asset(
-                          "assets/images/deliver-car.svg",
-                          width: 25,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                actionButton ?? SizedBox.shrink(),
+                // Spacer(),
                 Container(
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () {
-                          MainFunction.redirectCall(order.phone);
-                          print("Call to client: ${order.phone}");
-                        },
-                        color: HexColor.secondaryColor,
+                        onPressed: () => onCall(),
+                        color: color,
                         style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                            HexColor.secondaryColor,
-                          ),
+                          backgroundColor: MaterialStatePropertyAll(color),
                         ),
                         icon: SvgPicture.asset("assets/images/phone.svg"),
                       ),
                       IconButton(
-                        onPressed: () {
-                          Get.to(
-                            () => OrderDetailsPage(),
-                            arguments: {"order": order, "isPrimary": true},
-                          );
-                          print("Forward to Order");
-                        },
+                        onPressed: () => Get.to(
+                          () => detailsPage,
+                          arguments: {"order": order},
+                        ),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStatePropertyAll(
-                            HexColor.secondaryColor,
-                          ),
+                          backgroundColor: MaterialStatePropertyAll(color),
                         ),
                         icon: Icon(
                           Icons.arrow_forward_rounded,

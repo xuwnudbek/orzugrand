@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:orzugrand/pages/done_page/views/done_details_page.dart';
 import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
 import 'package:orzugrand/pages/other_tasks_page/views/task_details/task_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';

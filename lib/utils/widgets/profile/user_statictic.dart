@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/button.dart';
+import 'package:orzugrand/utils/widgets/custom_button.dart';
 
 class UserStatistics extends StatelessWidget {
   const UserStatistics({super.key});
@@ -43,9 +43,19 @@ class UserStatistics extends StatelessWidget {
             ),
             Expanded(
               flex: 2,
-              child: CircleAvatar(
-                maxRadius: 60,
-                backgroundColor: Colors.grey,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  CircleAvatar(
+                    maxRadius: 60,
+                    backgroundColor: Colors.grey,
+                  ),
+                  Align(
+                    child: Positioned(
+                      child: Icon(Icons.abc),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -107,7 +117,7 @@ class UserStatistics extends StatelessWidget {
               ),
             ),
             bgColor: HexColor.primaryColor,
-            height: 40,
+            height: 30,
             onTap: () {},
           ),
         ),

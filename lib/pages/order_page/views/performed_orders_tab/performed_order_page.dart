@@ -9,12 +9,16 @@ class PerformedOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pp = Provider.of<PerformedOrderProvider>(context);
-
-    return SingleChildScrollView(
-      child: Column(
-        children: pp.orders.map((e) => PerformedOrderCard(order: e)).toList(),
-      ),
+    return Consumer<PerformedOrderProvider>(
+      builder: (context, provider, _) {
+        return Column(
+          children: provider.orders
+              .map(
+                (e) => PerformedOrderCard(order: e),
+              )
+              .toList(),
+        );
+      },
     );
   }
 }

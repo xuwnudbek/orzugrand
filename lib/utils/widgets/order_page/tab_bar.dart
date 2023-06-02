@@ -27,7 +27,6 @@ class _OrderTabbarState extends State<OrderTabbar>
     var np = Provider.of<NewOrderProvider>(context, listen: false);
 
     return Consumer<OrderProvider>(builder: (context, orderProvider, child) {
-      print(widget);
       return TabBar(
         controller: _tabController,
         onTap: (index) {

@@ -19,12 +19,12 @@ class ProfilePage extends StatelessWidget {
         children: [
           //User image and data
           UserStatistics(),
-          SizedBox(height: 50),
           //User Opportunities
           Consumer<ProfileProvider>(
             builder: (context, provider, child) {
               return Column(
                 children: [
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -78,6 +78,34 @@ class ProfilePage extends StatelessWidget {
                           provider.setFingerPrintStatus = value;
                         },
                         value: provider.fingerPrintStatus,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: SvgPicture.asset(
+                                "assets/images/lock.svg",
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Text("Установить пин-код"),
+                          ],
+                        ),
+                      ),
+                      Switch(
+                        activeColor: HexColor.primaryColor,
+                        inactiveThumbColor: Colors.grey,
+                        inactiveTrackColor: Colors.white,
+                        onChanged: (value) {
+                          provider.setPinCodeStatus = value;
+                        },
+                        value: provider.pinCodeStatus,
                       ),
                     ],
                   ),
