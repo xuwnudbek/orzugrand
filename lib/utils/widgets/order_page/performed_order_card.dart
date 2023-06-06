@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/pages/done_page/views/done_details_page.dart';
 import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
+import 'package:orzugrand/pages/order_page/views/selfie_page/selfie_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
+import 'package:orzugrand/utils/widgets/order_page/selfie_card.dart';
 
 class PerformedOrderCard extends StatelessWidget {
   PerformedOrderCard({super.key, required this.order});
@@ -114,6 +116,10 @@ class PerformedOrderCard extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
+                    Get.to(
+                      () => SelfiePage(),
+                      arguments: {"order": order},
+                    );
                     //Logic
                   },
                   child: Container(

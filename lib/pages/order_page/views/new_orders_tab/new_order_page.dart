@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
 import 'package:orzugrand/pages/order_page/views/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
@@ -28,7 +29,7 @@ class NewOrderPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Доставил",
+                        "Выехал к клиенту",
                         style: TextStyle(
                           color: HexColor.secondaryTextColor,
                         ),
@@ -41,7 +42,18 @@ class NewOrderPage extends StatelessWidget {
                   height: 40,
                   bgColor: HexColor.primaryColor,
                   onTap: () {
-                    print("Add to");
+                    Get.snackbar(
+                      "№${e.contractNumber} ",
+                      "Buyurtma qabul qilindi",
+                      colorText: HexColor.secondaryTextColor,
+                      icon: Icon(
+                        Icons.check_circle_outline_rounded,
+                        color: HexColor.secondaryTextColor,
+                      ),
+                      backgroundColor: HexColor.secondaryColor,
+                      margin: EdgeInsets.all(5),
+                      duration: Duration(milliseconds: 1500),
+                    );
                   },
                 ),
               ))

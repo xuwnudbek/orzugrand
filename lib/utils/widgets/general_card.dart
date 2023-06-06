@@ -32,7 +32,7 @@ class GeneralCard extends StatelessWidget {
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
           color: color.withOpacity(0.1),
         ),
         child: Column(
@@ -123,7 +123,7 @@ class GeneralCard extends StatelessWidget {
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () => onCall(),
+                        onPressed: () => onCall.call(),
                         color: color,
                         style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(color),

@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:orzugrand/pages/authentication/authentication_page.dart';
+import 'package:orzugrand/pages/authentication/provider/fingerprint_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/all_time_orders_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/today_order_provider.dart';
@@ -9,6 +14,7 @@ import 'package:orzugrand/pages/order_page/views/details/provider/order_details_
 import 'package:orzugrand/pages/order_page/views/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/pages/order_page/views/performed_orders_tab/provider/performed_order_provider.dart';
 import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
+import 'package:orzugrand/pages/order_page/views/selfie_page/provider/selfie_provider.dart';
 import 'package:orzugrand/pages/other_tasks_page/provider/other_tasks_provider.dart';
 import 'package:orzugrand/pages/other_tasks_page/views/done_tasks/provider/done_task_provider.dart';
 import 'package:orzugrand/pages/other_tasks_page/views/new_tasks/provider/new_task_provider.dart';
@@ -20,11 +26,18 @@ import 'package:orzugrand/pages/returned_page/provider/new_returned_order_provid
 import 'package:orzugrand/pages/returned_page/provider/performed_returned_order_provider.dart';
 import 'package:orzugrand/pages/returned_page/provider/return_provider.dart';
 import 'package:orzugrand/pages/welcome.dart';
+import 'package:orzugrand/pages/yandex_map_page/provider/map_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_navigation_bar/provider/navbar_provider.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Directory directory = await getApplicationDocumentsDirectory();
+  print(directory.path);
+  Hive..init(directory.path);
+  await Hive.openBox("biometric");
   runApp(const MyApp());
 }
 
@@ -51,8 +64,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => AllTimeOrdersProvider()),
         ChangeNotifierProvider(create: (context) => ReturnProvider()),
         ChangeNotifierProvider(create: (context) => NewReturnedOrderProvider()),
+        ChangeNotifierProvider(create: (context) => SelfieProvider()),
+        ChangeNotifierProvider(create: (context) => MapProvider()),
+        ChangeNotifierProvider(create: (context) => FingerprintProvider()),
         ChangeNotifierProvider(
-            create: (context) => PerformedReturnedOrderProvider()),
+          create: (context) => PerformedReturnedOrderProvider(),
+        ),
       ],
       child: GetMaterialApp(
         routes: {
@@ -66,7 +83,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: MainPage(),
+        home: AuthPage(), //PickAddress(),
       ),
     );
   }

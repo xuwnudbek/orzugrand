@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton({
@@ -22,14 +21,11 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(),
       child: Container(
-        height: height,
-        constraints: BoxConstraints(maxWidth: Get.size.width * 0.5),
+        height: 40,
+        padding: EdgeInsets.symmetric(horizontal: 15),
         decoration: BoxDecoration(
-          border: Border.all(
-            color: borderColor != null ? borderColor! : Colors.white,
-          ),
-          color: bgColor != null ? bgColor : null,
-          borderRadius: BorderRadius.circular(20),
+          color: bgColor,
+          borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
+import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MainFunction {
@@ -52,5 +53,23 @@ class MainFunction {
         );
       }
     });
+  }
+
+  static getSnackbar({
+    required String title,
+    required String msg,
+    required IconData leading,
+  }) {
+    Get.snackbar(
+      title,
+      msg,
+      margin: EdgeInsets.all(5),
+      icon: Icon(
+        leading,
+        color: HexColor.secondaryTextColor,
+      ),
+      backgroundColor: HexColor.secondaryColor,
+      duration: Duration(milliseconds: 1500),
+    );
   }
 }

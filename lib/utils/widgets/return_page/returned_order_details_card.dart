@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
-import 'package:orzugrand/pages/order_page/views/selfie_page/provider/selfie_provider.dart';
+import 'package:orzugrand/pages/order_page/views/selfie_page/selfie_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
@@ -293,7 +293,8 @@ class ReturnedOrderDetailsCard extends StatelessWidget {
             height: 40,
             onTap: () {
               if (isNew) {
-                MainFunction.buildSnackbarNotification(order: order, msg: "Succesfully added to perform");
+                MainFunction.buildSnackbarNotification(
+                    order: order, msg: "Succesfully added to perform");
               } else {
                 Get.to(
                   () => SelfiePage(),

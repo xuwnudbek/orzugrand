@@ -44,6 +44,15 @@ dependencies:
   intl: ^0.17.0
 
   yandex_mapkit: ^3.2.0
+  image_picker: ^0.8.7+5
+  path_provider:
+  geolocator: ^9.0.2
+  permission_handler: ^10.2.0
+  local_auth: ^2.1.6
+  hive: ^2.2.3
+  passcode_screen: ^2.0.1
+  # hive: ^2.2.3
+  # google_maps_flutter: ^2.3.0
 
 dev_dependencies:
   flutter_test:
