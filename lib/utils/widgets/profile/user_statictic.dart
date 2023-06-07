@@ -51,9 +51,7 @@ class UserStatistics extends StatelessWidget {
                     backgroundColor: Colors.grey,
                   ),
                   Align(
-                    child: Positioned(
-                      child: Icon(Icons.abc),
-                    ),
+                    child: Icon(Icons.abc),
                   ),
                 ],
               ),

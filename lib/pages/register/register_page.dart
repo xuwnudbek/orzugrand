@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/register/register_form.dart';
 import 'package:orzugrand/utils/widgets/register/title.dart';
 

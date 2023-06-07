@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:orzugrand/pages/authentication/authentication_page.dart';
 import 'package:orzugrand/pages/authentication/provider/fingerprint_provider.dart';
+import 'package:orzugrand/pages/authentication/provider/pincode_provider.dart';
 import 'package:orzugrand/pages/profile_page/provider/profile_provider.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_data_page/edit_data_page.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_pass_page/edit_pass_page.dart';
@@ -78,9 +80,9 @@ class ProfilePage extends StatelessWidget {
                             inactiveThumbColor: Colors.grey,
                             inactiveTrackColor: Colors.white,
                             onChanged: (value) {
-                              provider.checkFingerprintAuth();
+                              provider.changeFingerprintStatus = value;
                             },
-                            value: provider.useBiometric,
+                            value: provider.isUsingFingerprint,
                           );
                         },
                       ),
@@ -103,14 +105,23 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Switch(
-                        activeColor: HexColor.primaryColor,
-                        inactiveThumbColor: Colors.grey,
-                        inactiveTrackColor: Colors.white,
-                        onChanged: (value) {
-                          provider.setPinCodeStatus = value;
+                      Consumer<PincodeProvider>(
+                        builder: (context, provider, child) {
+                          return Switch(
+                            activeColor: HexColor.primaryColor,
+                            inactiveThumbColor: Colors.grey,
+                            inactiveTrackColor: Colors.white,
+                            onChanged: (value) {
+                              if (value) {
+                                Get.to(
+                                  () => AuthPage(),
+                                  arguments: {"isSettingNewPassword": true},
+                                );
+                              }
+                            },
+                            value: provider.isSetPassword ?? false,
+                          );
                         },
-                        value: provider.pinCodeStatus,
                       ),
                     ],
                   ),

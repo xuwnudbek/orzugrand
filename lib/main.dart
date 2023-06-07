@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:orzugrand/pages/authentication/authentication_page.dart';
 import 'package:orzugrand/pages/authentication/provider/fingerprint_provider.dart';
+import 'package:orzugrand/pages/authentication/provider/pincode_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/all_time_orders_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/today_order_provider.dart';
@@ -34,10 +36,16 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+  ]);
   Directory directory = await getApplicationDocumentsDirectory();
   print(directory.path);
   Hive..init(directory.path);
   await Hive.openBox("biometric");
+  await Hive.openBox("user");
+  await Hive.openBox("security");
   runApp(const MyApp());
 }
 
@@ -46,6 +54,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var box = Hive.box("user");
+    var security = Hive.box("security");
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => OrderProvider()),
@@ -67,24 +78,30 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SelfieProvider()),
         ChangeNotifierProvider(create: (context) => MapProvider()),
         ChangeNotifierProvider(create: (context) => FingerprintProvider()),
+        ChangeNotifierProvider(create: (context) => PincodeProvider()),
         ChangeNotifierProvider(
           create: (context) => PerformedReturnedOrderProvider(),
         ),
       ],
       child: GetMaterialApp(
-        routes: {
-          "/welcome": (c) => Welcome(),
-          "/welcome/register": (c) => RegisterPage(),
-          "/welcome/login": (c) => LoginPage(),
-        },
-        theme: ThemeData(
-          scaffoldBackgroundColor: HexColor.scaffoldBackgroundColor,
-          fontFamily: "Montserrat",
-          useMaterial3: true,
-        ),
-        debugShowCheckedModeBanner: false,
-        home: AuthPage(), //PickAddress(),
-      ),
+          routes: {
+            "/welcome": (c) => Welcome(),
+            "/welcome/register": (c) => RegisterPage(),
+            "/welcome/login": (c) => LoginPage(),
+          },
+          theme: ThemeData(
+            scaffoldBackgroundColor: HexColor.scaffoldBackgroundColor,
+            fontFamily: "Montserrat",
+            useMaterial3: true,
+          ),
+          debugShowCheckedModeBanner: false,
+          home: Consumer<FingerprintProvider>(
+            builder: (context, provider, _) {
+              return provider.isSetPincode
+                  ? AuthPage()
+                  : MainPage();
+            },
+          )),
     );
   }
 }
