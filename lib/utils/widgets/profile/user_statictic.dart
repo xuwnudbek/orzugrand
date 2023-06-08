@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:orzugrand/pages/profile_page/provider/profile_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
 
 class UserStatistics extends StatelessWidget {
   const UserStatistics({super.key});
@@ -41,20 +45,34 @@ class UserStatistics extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircleAvatar(
-                    maxRadius: 60,
-                    backgroundColor: Colors.grey,
+            Consumer<ProfileProvider>(
+              builder: (context, provider, child) {
+                return Expanded(
+                  flex: 2,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () async {
+                          await provider.selectImage();
+                        },
+                        child: CircleAvatar(
+                          maxRadius: 60,
+                          backgroundColor: Colors.grey,
+                          backgroundImage: provider.imgPath != ""
+                              ? FileImage(
+                                  File(provider.imgPath),
+                                )
+                              : null,
+                        ),
+                      ),
+                      Align(
+                        child: Icon(Icons.abc),
+                      ),
+                    ],
                   ),
-                  Align(
-                    child: Icon(Icons.abc),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
             Expanded(
               flex: 1,

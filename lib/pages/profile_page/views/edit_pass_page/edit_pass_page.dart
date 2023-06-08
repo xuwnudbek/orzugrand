@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_pass_page/provider/edit_pass_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/snackbar/custom_snackbars.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/profile/user_statictic.dart';
 import 'package:provider/provider.dart';
@@ -184,7 +185,9 @@ class EditPassPage extends StatelessWidget {
                         bgColor: HexColor.secondaryColor,
                         onTap: () {
                           //Logic
-                          print("Saved");
+                          print("Save button pressed");
+                          CustomSnackbars.success("Пароль успешно изменен");
+                          Get.back();
                         },
                       ),
                       SizedBox(height: 20),

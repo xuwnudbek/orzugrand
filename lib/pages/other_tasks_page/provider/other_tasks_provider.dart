@@ -13,6 +13,5 @@ class OtherTasksProvider extends ChangeNotifier {
   void onChangeTab(int index) {
     _tabIndex = index;
     notifyListeners();
-    print(currentTab);
   }
 }

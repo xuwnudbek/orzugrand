@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:orzugrand/pages/authentication/authentication_page.dart';
+import 'package:orzugrand/pages/authentication/pincode_page.dart';
 import 'package:orzugrand/pages/authentication/provider/fingerprint_provider.dart';
 import 'package:orzugrand/pages/authentication/provider/pincode_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/all_time_orders_provider.dart';
@@ -43,9 +43,8 @@ void main() async {
   Directory directory = await getApplicationDocumentsDirectory();
   print(directory.path);
   Hive..init(directory.path);
-  await Hive.openBox("biometric");
-  await Hive.openBox("user");
   await Hive.openBox("security");
+  await Hive.openBox("user");
   runApp(const MyApp());
 }
 
@@ -54,8 +53,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var box = Hive.box("user");
     var security = Hive.box("security");
+
+    print("isSetPincode ${security.get("isSetPincode")}");
 
     return MultiProvider(
       providers: [
@@ -84,24 +84,19 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: GetMaterialApp(
-          routes: {
-            "/welcome": (c) => Welcome(),
-            "/welcome/register": (c) => RegisterPage(),
-            "/welcome/login": (c) => LoginPage(),
-          },
-          theme: ThemeData(
-            scaffoldBackgroundColor: HexColor.scaffoldBackgroundColor,
-            fontFamily: "Montserrat",
-            useMaterial3: true,
-          ),
-          debugShowCheckedModeBanner: false,
-          home: Consumer<FingerprintProvider>(
-            builder: (context, provider, _) {
-              return provider.isSetPincode
-                  ? AuthPage()
-                  : MainPage();
-            },
-          )),
+        routes: {
+          "/welcome": (c) => Welcome(),
+          "/welcome/register": (c) => RegisterPage(),
+          "/welcome/login": (c) => LoginPage(),
+        },
+        theme: ThemeData(
+          scaffoldBackgroundColor: HexColor.scaffoldBackgroundColor,
+          fontFamily: "Montserrat",
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: AuthPage(), //MainPage(),
+      ),
     );
   }
 }
