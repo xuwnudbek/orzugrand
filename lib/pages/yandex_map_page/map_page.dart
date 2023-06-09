@@ -1,25 +1,18 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:orzugrand/pages/yandex_map_page/provider/map_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class PickAddress extends StatefulWidget {
   const PickAddress({super.key});
 
   @override
-  State<PickAddress> createState() => _GoogleMapPageState();
+  State<PickAddress> createState() => _PickAddressState();
 }
 
-class _GoogleMapPageState extends State<PickAddress> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _PickAddressState extends State<PickAddress> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,22 +21,20 @@ class _GoogleMapPageState extends State<PickAddress> {
           return Scaffold(
             body: Stack(
               children: [
-                YandexMap(
-                  logoAlignment: MapAlignment(
-                    horizontal: HorizontalAlignment.left,
-                    vertical: VerticalAlignment.top,
+                GoogleMap(
+                  initialCameraPosition: CameraPosition(
+                    target: LatLng(40.7128, -74.0060),
+                    zoom: 14.4746,
                   ),
-                  onMapCreated: (controller) =>
-                      provider.onMapCreated(controller),
                 ),
               ],
             ),
             floatingActionButton: FloatingActionButton(
               heroTag: "current",
               onPressed: () {
-                provider;
+                // provider;
               },
-              child: Icon(Icons.remove_rounded),
+              child: Icon(Icons.center_focus_strong_rounded),
             ),
             bottomNavigationBar: Container(
               padding: EdgeInsets.all(10),

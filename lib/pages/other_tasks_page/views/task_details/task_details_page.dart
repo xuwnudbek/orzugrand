@@ -7,12 +7,13 @@ import 'package:orzugrand/utils/functions/main_function.dart';
 import 'package:orzugrand/utils/widgets/order_page/order_page_title.dart';
 
 class TaskDetailsPage extends StatelessWidget {
-  const TaskDetailsPage({super.key});
+  const TaskDetailsPage({super.key, required this.primaryColor});
+
+  final Color primaryColor;
 
   @override
   Widget build(BuildContext context) {
     Task task = Get.arguments["task"];
-    Color color = Get.arguments["color"];
 
     return Scaffold(
       body: SafeArea(
@@ -23,14 +24,13 @@ class TaskDetailsPage extends StatelessWidget {
               CustomTitle(
                 prefix: SvgPicture.asset(
                   "assets/images/like.svg",
-                  color: HexColor.blue,
+                  color: primaryColor,
                 ),
                 title: Row(
                   children: [
                     Text(
                       "Другие задачи",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
                     ),
                   ],
                 ),
@@ -38,7 +38,7 @@ class TaskDetailsPage extends StatelessWidget {
                   onTap: () {},
                   child: CircleAvatar(
                     maxRadius: 20,
-                    backgroundColor: HexColor.primaryColor,
+                    backgroundColor: primaryColor,
                     child: Icon(
                       Icons.notifications_none_rounded,
                       size: 22,
@@ -77,7 +77,7 @@ class TaskDetailsPage extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: HexColor.primaryColor.withOpacity(0.1),
+                  color: primaryColor.withOpacity(0.1),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +92,7 @@ class TaskDetailsPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
-                              color: HexColor.primaryColor,
+                              color: primaryColor,
                             ),
                           ),
                           Text(
@@ -117,7 +117,7 @@ class TaskDetailsPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
-                              color: HexColor.primaryColor,
+                              color: primaryColor,
                             ),
                           ),
                           Text(
@@ -145,7 +145,7 @@ class TaskDetailsPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
-                                  color: HexColor.primaryColor,
+                                  color: primaryColor,
                                 ),
                               ),
                               Text(

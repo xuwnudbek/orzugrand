@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -9,24 +10,21 @@ class GeneralCard extends StatelessWidget {
     super.key,
     required this.order,
     required this.onCall,
-    required this.detailsPage,
+    required this.onTap,
     required this.color,
     this.actionButton,
   });
 
   final Order order;
   final Function onCall;
-  final Widget detailsPage;
+  final Function onTap;
   final Color color;
   Widget? actionButton;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(
-        () => detailsPage,
-        arguments: {"order": order},
-      ),
+      onTap: () => onTap(),
       child: Container(
         width: double.maxFinite,
         padding: EdgeInsets.all(20),
@@ -131,10 +129,7 @@ class GeneralCard extends StatelessWidget {
                         icon: SvgPicture.asset("assets/images/phone.svg"),
                       ),
                       IconButton(
-                        onPressed: () => Get.to(
-                          () => detailsPage,
-                          arguments: {"order": order},
-                        ),
+                        onPressed: () => onTap.call(),
                         style: ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(color),
                         ),

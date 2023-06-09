@@ -3,18 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/order_page/order_details_card.dart';
+import 'package:orzugrand/utils/widgets/general_details_card.dart';
 import 'package:orzugrand/utils/widgets/order_page/order_page_title.dart';
 
-class OrderDetailsPage extends StatelessWidget {
-  OrderDetailsPage({super.key});
+class GeneralDetailsPage extends StatelessWidget {
+  GeneralDetailsPage({super.key, required this.primaryColor});
+
+  final Color primaryColor;
+  final Order order = Get.arguments["order"];
 
   @override
   Widget build(BuildContext context) {
-    Order order = Get.arguments["order"];
-    bool isPrimary = Get.arguments["isPrimary"] ?? false;
-    // var odp = Provider.of<OrderDetailsProvider>(context);
-
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(20.0),
@@ -24,8 +23,7 @@ class OrderDetailsPage extends StatelessWidget {
             CustomTitle(
               prefix: SvgPicture.asset(
                 "assets/images/order-list.svg",
-                color:
-                    isPrimary ? HexColor.primaryColor : HexColor.secondaryColor,
+                color: primaryColor,
               ),
               title: Row(
                 children: [
@@ -41,9 +39,7 @@ class OrderDetailsPage extends StatelessWidget {
                     "${order.contractNumber}",
                     style: TextStyle(
                       fontSize: 20,
-                      color: isPrimary
-                          ? HexColor.primaryColor
-                          : HexColor.secondaryColor,
+                      color: primaryColor,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -53,9 +49,7 @@ class OrderDetailsPage extends StatelessWidget {
                 onTap: () {},
                 child: CircleAvatar(
                   maxRadius: 20,
-                  backgroundColor: isPrimary
-                      ? HexColor.primaryColor
-                      : HexColor.secondaryColor,
+                  backgroundColor: primaryColor,
                   child: Icon(
                     Icons.notifications_none_rounded,
                     size: 22,
@@ -79,14 +73,11 @@ class OrderDetailsPage extends StatelessWidget {
                         "Клиент: ",
                         style: TextStyle(
                           fontSize: 16,
-                          color: isPrimary
-                              ? HexColor.primaryColor
-                              : HexColor.secondaryColor,
+                          color: primaryColor,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
-                        //get name & sname //after I could change it
                         "${order.client.split(" ")[0]} ${order.client.split(" ")[1]}",
                         style: TextStyle(
                           fontSize: 16,
@@ -103,7 +94,7 @@ class OrderDetailsPage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    OrderDetailsCard(isPrimary, true),
+                    GeneralDetailsCard(color: primaryColor, order: order),
                   ],
                 ),
               ),

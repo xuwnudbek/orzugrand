@@ -50,6 +50,7 @@ dependencies:
   permission_handler: ^10.2.0
   local_auth: ^2.1.6
   hive: ^2.2.3
+  google_maps_flutter: ^2.3.0
   # hive: ^2.2.3
   # google_maps_flutter: ^2.3.0
 

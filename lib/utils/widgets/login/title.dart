@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:orzugrand/utils/color_hex_to.dart';
 
 class LoginTitle extends StatelessWidget {
   const LoginTitle({super.key});

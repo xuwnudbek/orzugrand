@@ -1,12 +1,11 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/pages/order_page/views/selfie_page/provider/selfie_provider.dart';
-import 'package:orzugrand/pages/yandex_map_page/yandex_map_page.dart';
+import 'package:orzugrand/pages/yandex_map_page/map_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/circle_button.dart';
@@ -57,8 +56,7 @@ class SelfieCard extends StatelessWidget {
                           : Image.file(
                               File("${provider.imgName}"),
                               fit: BoxFit.cover,
-                              frameBuilder: (context, child, frame,
-                                  wasSynchronouslyLoaded) {
+                              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                                 return ClipRRect(
                                   borderRadius: BorderRadius.circular(15),
                                   child: child,

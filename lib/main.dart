@@ -1,18 +1,14 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:orzugrand/pages/authentication/pincode_page.dart';
 import 'package:orzugrand/pages/authentication/provider/fingerprint_provider.dart';
 import 'package:orzugrand/pages/authentication/provider/pincode_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/all_time_orders_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/today_order_provider.dart';
 import 'package:orzugrand/pages/login/login_page.dart';
-import 'package:orzugrand/pages/main_page.dart';
-import 'package:orzugrand/pages/order_page/views/details/provider/order_details_provider.dart';
 import 'package:orzugrand/pages/order_page/views/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/pages/order_page/views/performed_orders_tab/provider/performed_order_provider.dart';
 import 'package:orzugrand/pages/order_page/provider/order_provider.dart';
@@ -29,6 +25,7 @@ import 'package:orzugrand/pages/returned_page/provider/performed_returned_order_
 import 'package:orzugrand/pages/returned_page/provider/return_provider.dart';
 import 'package:orzugrand/pages/welcome.dart';
 import 'package:orzugrand/pages/yandex_map_page/provider/map_provider.dart';
+import 'package:orzugrand/pages/yandex_map_page/map_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_navigation_bar/provider/navbar_provider.dart';
 import 'package:path_provider/path_provider.dart';
@@ -42,7 +39,7 @@ void main() async {
   ]);
   Directory directory = await getApplicationDocumentsDirectory();
   print(directory.path);
-  Hive..init(directory.path);
+  Hive.init(directory.path);
   await Hive.openBox("security");
   await Hive.openBox("user");
   runApp(const MyApp());
@@ -63,7 +60,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => NewOrderProvider()),
         ChangeNotifierProvider(create: (context) => PerformedOrderProvider()),
         ChangeNotifierProvider(create: (context) => NavbarProvider()),
-        ChangeNotifierProvider(create: (context) => OrderDetailsProvider()),
         ChangeNotifierProvider(create: (context) => OtherTasksProvider()),
         ChangeNotifierProvider(create: (context) => NewTaskProvider()),
         ChangeNotifierProvider(create: (context) => DoneTaskProvider()),
@@ -95,7 +91,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: AuthPage(), //MainPage(),
+        home: PickAddress(), //MainPage(), //AuthPage(),
       ),
     );
   }

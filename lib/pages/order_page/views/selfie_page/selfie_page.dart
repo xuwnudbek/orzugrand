@@ -15,17 +15,6 @@ class SelfiePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Order order = Get.arguments["order"];
-    // Order order = Order.fromMap({
-    //   "client": "Арзикулов Жамшид Умидович",
-    //   "addressDelivery": "Фергана Азизова 12 д кв 35",
-    //   "orderedDate": "12.03.2023",
-    //   "phone": "+998998101010",
-    //   "addPhone": "+998998101010",
-    //   "city": "Фергана",
-    //   "clientComment": "Нужно доставить после работы по времени после 17:00",
-    //   "contractNumber": 123456,
-    //   "product": "Комбинированная плита Artel Milagro 50 00-K белый",
-    // });
 
     return Scaffold(
       body: Padding(
@@ -76,7 +65,6 @@ class SelfiePage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        //get name & sname //after I could change it
                         "${order.client.split(" ")[0]} ${order.client.split(" ")[1]}",
                         style: TextStyle(
                           fontSize: 16,

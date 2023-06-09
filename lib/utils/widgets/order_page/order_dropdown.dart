@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/order_page/order_details_card.dart';
+import 'package:orzugrand/utils/widgets/general_details_card.dart';
 
 class OrderDropdown extends StatelessWidget {
   const OrderDropdown({super.key});
@@ -45,7 +44,7 @@ class OrderDropdown extends StatelessWidget {
         collapsedIconColor: HexColor.primaryColor,
         textColor: HexColor.primaryColor,
         children: [
-          OrderDetailsCard(true, false),
+          GeneralDetailsCard(order: order, color: HexColor.primaryColor),
         ],
       ),
     );

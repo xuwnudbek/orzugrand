@@ -1,12 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/task.dart';
-import 'package:orzugrand/pages/done_page/views/done_details_page.dart';
-import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
 import 'package:orzugrand/pages/other_tasks_page/views/task_details/task_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
+import 'package:orzugrand/utils/widgets/general_details_page.dart';
 
 class NewTaskCard extends StatelessWidget {
   NewTaskCard({super.key, required this.task, required this.color});
@@ -19,8 +20,9 @@ class NewTaskCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.to(
-          () => TaskDetailsPage(),
-          arguments: {"task": task, "color": HexColor.blue},
+          () => TaskDetailsPage(primaryColor: color),
+          transition: Transition.cupertino,
+          arguments: {"task": task},
         );
         //Logic
       },
@@ -161,8 +163,8 @@ class NewTaskCard extends StatelessWidget {
                       IconButton(
                         onPressed: () {
                           Get.to(
-                            () => OrderDetailsPage(),
-                            // arguments: {"order": order, "isPrimary": true},
+                            () => GeneralDetailsPage(primaryColor: HexColor.darkBlue),
+                            arguments: {"order": e},
                           );
                           print("Forward to Order");
                         },

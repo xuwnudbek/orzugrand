@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/pages/returned_page/provider/new_returned_order_provider.dart';
-import 'package:orzugrand/pages/returned_page/views/return_details_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/general_card.dart';
-import 'package:orzugrand/utils/widgets/return_page/return_order_card.dart';
+import 'package:orzugrand/utils/widgets/general_details_page.dart';
 import 'package:provider/provider.dart';
 
 class NewReturnedOrdersTab extends StatelessWidget {
@@ -25,7 +24,10 @@ class NewReturnedOrdersTab extends StatelessWidget {
                     (e) => GeneralCard(
                       order: e,
                       color: HexColor.darkRed,
-                      detailsPage: ReturnDetailsPage(),
+                      onTap: () => Get.to(
+                        () => GeneralDetailsPage(primaryColor: HexColor.darkRed),
+                        arguments: {"order": e},
+                      ),
                       onCall: () => MainFunction.redirectCall(e.phone),
                       actionButton: CustomButton(
                         title: Row(
@@ -37,8 +39,7 @@ class NewReturnedOrdersTab extends StatelessWidget {
                               ),
                             ),
                             SizedBox(width: 5),
-                            SvgPicture.asset("assets/images/deliver-car.svg",
-                                width: 20),
+                            SvgPicture.asset("assets/images/deliver-car.svg", width: 20),
                           ],
                         ),
                         height: 40,

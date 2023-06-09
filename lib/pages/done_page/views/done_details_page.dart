@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:orzugrand/models/order.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
-import 'package:orzugrand/utils/widgets/done_page/done_details_card.dart';
+import 'package:orzugrand/utils/widgets/general_details_page.dart';
 import 'package:orzugrand/utils/widgets/order_page/order_page_title.dart';
 
 class DoneDetailsPage extends StatelessWidget {
@@ -94,7 +94,7 @@ class DoneDetailsPage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    DoneDetailsCard(),
+                    GeneralDetailsPage(primaryColor: HexColor.darkBlue),
                   ],
                 ),
               ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:orzugrand/pages/order_page/views/details/order_details_page.dart';
 import 'package:orzugrand/pages/order_page/views/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/functions/main_function.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:orzugrand/utils/widgets/general_card.dart';
+import 'package:orzugrand/utils/widgets/general_details_page.dart';
 import 'package:provider/provider.dart';
 
 class NewOrderPage extends StatelessWidget {
@@ -20,7 +20,10 @@ class NewOrderPage extends StatelessWidget {
           .map((e) => GeneralCard(
                 order: e,
                 color: HexColor.primaryColor,
-                detailsPage: OrderDetailsPage(),
+                onTap: () => Get.to(
+                  () => GeneralDetailsPage(primaryColor: HexColor.primaryColor),
+                  arguments: {"order": e},
+                ),
                 onCall: () {
                   MainFunction.redirectCall(e.phone);
                 },
@@ -35,8 +38,7 @@ class NewOrderPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 5),
-                      SvgPicture.asset("assets/images/deliver-car.svg",
-                          width: 20),
+                      SvgPicture.asset("assets/images/deliver-car.svg", width: 20),
                     ],
                   ),
                   height: 40,
