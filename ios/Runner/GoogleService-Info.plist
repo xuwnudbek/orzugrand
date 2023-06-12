@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>989215953651-a3nvftrq7vkcjo80fe31h13u64rs2mls.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.989215953651-a3nvftrq7vkcjo80fe31h13u64rs2mls</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD4JZ2L_GV8GgaiqbenkR0aY1PwpwOUHVU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>989215953651</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.orzugrand</string>
+	<key>PROJECT_ID</key>
+	<string>orzugrand-24b7d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>orzugrand-24b7d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:989215953651:ios:850d003cdda0ae3eb25d86</string>
+</dict>
+</plist>

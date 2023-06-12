@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "989215953651",
+    "project_id": "orzugrand-24b7d",
+    "storage_bucket": "orzugrand-24b7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989215953651:android:8c3c76a633f6ad29b25d86",
+        "android_client_info": {
+          "package_name": "com.example.orzugrand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989215953651-50vegj00m504a1g4klhvt82obk8vodj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-WaYXdBZIZA1YOoCPH9iSGK6cRjRDqWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989215953651-50vegj00m504a1g4klhvt82obk8vodj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
