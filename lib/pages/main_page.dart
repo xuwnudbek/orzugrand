@@ -9,7 +9,6 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var nbp = Provider.of<NavbarProvider>(context);
-
     return Scaffold(
       body: SafeArea(
         child: nbp.currentPage,

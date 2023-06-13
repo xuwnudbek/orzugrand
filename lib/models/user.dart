@@ -1,28 +1,30 @@
+import 'dart:convert';
+
 class User {
   String name;
-  String sname;
   String phone;
-  String city;
+  String region_id;
   String address;
   String password;
+  String token;
 
   User({
     required this.name,
-    required this.sname,
     required this.phone,
-    required this.city,
+    required this.region_id,
     required this.address,
     required this.password,
+    required this.token,
   });
-
-  factory User.fromMap(Map<String, dynamic> data) {
+  factory User.fromJson(String jsonUser) {
+    Map data = jsonDecode(jsonUser);
     return User(
       name: data["name"],
-      sname: data["sname"],
+      region_id: data["region_id"],
       phone: data["phone"],
-      city: data["city"],
       address: data["address"],
       password: data["password"],
+      token: data["token"],
     );
   }
 }

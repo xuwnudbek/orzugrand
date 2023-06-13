@@ -6,6 +6,8 @@ import 'package:orzugrand/pages/profile_page/provider/profile_provider.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_data_page/edit_data_page.dart';
 import 'package:orzugrand/pages/profile_page/views/edit_pass_page/edit_pass_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/widgets/custom_button.dart';
+import 'package:orzugrand/utils/widgets/custom_navigation_bar/bottom_navigation.dart';
 import 'package:orzugrand/utils/widgets/profile/user_statictic.dart';
 import 'package:provider/provider.dart';
 
@@ -115,6 +117,7 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
+                  //Edit data
                   GestureDetector(
                     onTap: () {
                       Get.to(
@@ -145,6 +148,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20),
+                  //Edit password
                   GestureDetector(
                     onTap: () {
                       Get.to(
@@ -173,6 +177,8 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: 20),
+                  CustomButton(title: Text("Logout"), height: 40, onTap: () => provider.logout()),
                 ],
               );
             },

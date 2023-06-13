@@ -11,56 +11,59 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 20, top: 20, right: 20),
-      child: Column(
-        children: [
-          CustomTitle(
-            prefix: SvgPicture.asset("assets/images/order-list.svg"),
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Заявки",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
+    return ChangeNotifierProvider(
+      create: (context) => OrderProvider(),
+      builder: (context, child) => Padding(
+        padding: EdgeInsets.only(left: 20, top: 20, right: 20),
+        child: Column(
+          children: [
+            CustomTitle(
+              prefix: SvgPicture.asset("assets/images/order-list.svg"),
+              title: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Заявки",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-                SizedBox(width: 20),
-                Text(
-                  "12+",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: HexColor.primaryColor,
-                    fontWeight: FontWeight.w500,
+                  SizedBox(width: 20),
+                  Text(
+                    "12+",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: HexColor.primaryColor,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            suffix: GestureDetector(
-              onTap: () {},
-              child: CircleAvatar(
-                maxRadius: 20,
-                backgroundColor: HexColor.primaryColor,
-                child: SvgPicture.asset(
-                  "assets/images/notification.svg",
-                  color: HexColor.secondaryTextColor,
+                ],
+              ),
+              suffix: GestureDetector(
+                onTap: () {},
+                child: CircleAvatar(
+                  maxRadius: 20,
+                  backgroundColor: HexColor.primaryColor,
+                  child: SvgPicture.asset(
+                    "assets/images/notification.svg",
+                    color: HexColor.secondaryTextColor,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 20),
-          OrderTabbar(),
-          SizedBox(height: 10),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Consumer<OrderProvider>(
-                builder: (context, provider, child) => provider.currentTap,
+            SizedBox(height: 20),
+            OrderTabbar(),
+            SizedBox(height: 10),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Consumer<OrderProvider>(
+                  builder: (context, provider, child) => provider.currentTap,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

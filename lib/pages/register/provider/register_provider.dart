@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:orzugrand/controllers/http/http.dart';
 import 'package:orzugrand/controllers/domain/domains.dart';
@@ -7,7 +9,7 @@ class RegisterProvider extends ChangeNotifier {
   TextEditingController snameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController cityController = TextEditingController();
+  TextEditingController cityController = TextEditingController()..text = "1";
   TextEditingController addrController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -26,14 +28,15 @@ class RegisterProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List> get regions async => await HttpHelper().get(Domains.regions).then((value) => value.data);
+  Future<List> get regions async => await HttpHelper().get(url: Domains.regions).then((value) {
+        return jsonDecode(value.body);
+      });
 
   get data => {
         "name": nameController.text + " " + snameController.text,
-        "sname": snameController.text,
         "email": emailController.text,
         "phone_number": phoneController.text,
-        "region_id": int.tryParse(cityController.text),
+        "region_id": cityController.text,
         "address": addrController.text,
         "password": passwordController.text,
         "password_confirmation": confirmPasswordController.text,

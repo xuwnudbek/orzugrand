@@ -7,10 +7,15 @@ class CustomSnackbars {
     Get.snackbar(
       "Success",
       "$msg",
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      icon: Icon(
+        Icons.check_circle,
+        color: Colors.white,
+      ),
       colorText: Colors.white,
       backgroundColor: Colors.green,
       margin: EdgeInsets.all(10),
-      duration: Duration(milliseconds: 1500),
+      duration: Duration(milliseconds: 2000),
     );
   }
 
@@ -19,10 +24,15 @@ class CustomSnackbars {
     Get.snackbar(
       "Error",
       "$msg",
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      icon: Icon(
+        Icons.error_outline,
+        color: Colors.white,
+      ),
       colorText: Colors.white,
       backgroundColor: Colors.red,
       margin: EdgeInsets.all(10),
-      duration: Duration(milliseconds: 1500),
+      duration: Duration(milliseconds: 2000),
     );
   }
 
@@ -31,10 +41,15 @@ class CustomSnackbars {
     Get.snackbar(
       "Warning",
       "$msg",
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      icon: Icon(
+        Icons.warning_amber_outlined,
+        color: Colors.white,
+      ),
       colorText: Colors.white,
       backgroundColor: Colors.orange,
       margin: EdgeInsets.all(10),
-      duration: Duration(milliseconds: 1500),
+      duration: Duration(milliseconds: 2000),
     );
   }
 }

@@ -29,21 +29,6 @@ class LoginPage extends StatelessWidget {
             LoginTitle(),
             SizedBox(height: 30),
             LoginForm(),
-            CustomButton(
-              title: Text(
-                "ВОЙТИ",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: HexColor.secondaryTextColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              height: 40,
-              bgColor: HexColor.secondaryColor,
-              onTap: () {
-                print("Login");
-              },
-            ),
           ],
         ),
       ),

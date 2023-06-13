@@ -1,31 +1,29 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:orzugrand/controllers/domain/domains.dart';
+import 'package:orzugrand/controllers/http/http.dart';
 import 'package:orzugrand/models/order.dart';
 
 class NewOrderProvider extends ChangeNotifier {
-  List<Order> orders = [
-    Order.fromMap({
-      "addPhone": "+998902902614",
-      "addressDelivery": "Фергана Азизова 12 д кв 35",
-      "client": "Арзикулов Жамшид Умидович",
-      "orderedDate": "12.03.2023",
-      "phone": "+998998101010",
-      "city": "Фергана",
-      "clientComment": "Нужно доставить после работы по времени после 17:00",
-      "contractNumber": 123456,
-      "product": "Двухкамерный холодильник 290л Samsung RB29FERNDSA стальной",
-    }),
-    Order.fromMap({
-      "addPhone": "+998919992614",
-      "addressDelivery": "Фергана Азизова 12 д кв 35",
-      "client": "Арзикулов Жамшид Умидович",
-      "orderedDate": "12.03.2023",
-      "phone": "+998931255689",
-      "city": "Фергана",
-      "clientComment": "Нужно доставить после работы по времени после 17:00",
-      "contractNumber": 987654,
-      "product": "Комбинированная плита Artel Milagro 50 00-K белый",
-    }),
-  ];
+  List<Order>? orders = [];
 
-  int get orderCount => orders.length;
+  NewOrderProvider() {
+    getAllOrders();
+  }
+
+  void getAllOrders() async {
+    var res = await HttpHelper().get(url: Domains.tasks);
+    if (res.statusCode < 299) {
+      updateOrders(jsonDecode(res.body)["data"]);
+    }
+  }
+
+  updateOrders(List? orders) {
+    this.orders = orders?.map((e) => Order.fromMap(e)).toList();
+    notifyListeners();
+    print("New orders: $orders");
+  }
+
+  int get orderCount => orders?.length ?? 0;
 }

@@ -1,19 +1,17 @@
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:orzugrand/controllers/auth/auth_provider.dart';
-import 'package:orzugrand/firebase_options.dart';
-import 'package:orzugrand/pages/authentication/pincode_page.dart';
+import 'package:orzugrand/controllers/hive/hive_provider.dart';
 import 'package:orzugrand/pages/authentication/provider/fingerprint_provider.dart';
 import 'package:orzugrand/pages/authentication/provider/pincode_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/all_time_orders_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/done_provider.dart';
 import 'package:orzugrand/pages/done_page/provider/today_order_provider.dart';
 import 'package:orzugrand/pages/login/login_page.dart';
+import 'package:orzugrand/pages/login/provider/login_provider.dart';
 import 'package:orzugrand/pages/main_page.dart';
 import 'package:orzugrand/pages/order_page/views/new_orders_tab/provider/new_order_provider.dart';
 import 'package:orzugrand/pages/order_page/views/performed_orders_tab/provider/performed_order_provider.dart';
@@ -32,7 +30,6 @@ import 'package:orzugrand/pages/returned_page/provider/performed_returned_order_
 import 'package:orzugrand/pages/returned_page/provider/return_provider.dart';
 import 'package:orzugrand/pages/welcome.dart';
 import 'package:orzugrand/pages/yandex_map_page/provider/map_provider.dart';
-import 'package:orzugrand/pages/yandex_map_page/map_page.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
 import 'package:orzugrand/utils/widgets/custom_navigation_bar/provider/navbar_provider.dart';
 import 'package:path_provider/path_provider.dart';
@@ -45,16 +42,13 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
   Directory directory = await getApplicationDocumentsDirectory();
   print(directory.path);
   Hive.init(directory.path);
-  await Hive.openBox("security");
   await Hive.openBox("user");
-  runApp(const MyApp());
+  await Hive.openBox("security");
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -63,11 +57,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => OrderProvider()),
+        // ChangeNotifierProvider(create: (context) => OrderProvider()),
         ChangeNotifierProvider(create: (context) => NewOrderProvider()),
         ChangeNotifierProvider(create: (context) => PerformedOrderProvider()),
         ChangeNotifierProvider(create: (context) => NavbarProvider()),
@@ -91,6 +83,8 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => RegisterProvider()),
+        ChangeNotifierProvider(create: (context) => LoginProvider()),
+        ChangeNotifierProvider(create: (context) => HiveProvider()),
       ],
       child: GetMaterialApp(
         routes: {
@@ -104,16 +98,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: StreamBuilder(
-          stream: auth.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return MainPage();
-            } else {
-              return Welcome();
-            }
+        home: Consumer<HiveProvider>(
+          builder: (context, provider, _) {
+            print("token: ${provider.token}");
+            print("auth: ${provider.isAuth}");
+            return provider.isAuth ? MainPage() : Welcome();
           },
-        ), //PickAddress() //AuthPage(),
+        ),
       ),
     );
   }

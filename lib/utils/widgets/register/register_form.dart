@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:orzugrand/controllers/auth/auth_provider.dart';
 import 'package:orzugrand/controllers/auth/validator.dart';
 import 'package:orzugrand/pages/register/provider/register_provider.dart';
 import 'package:orzugrand/utils/color_hex_to.dart';
+import 'package:orzugrand/utils/snackbar/custom_snackbars.dart';
 import 'package:orzugrand/utils/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 
@@ -346,7 +348,12 @@ class RegisterForm extends StatelessWidget {
                                               value: selectedValue,
                                               items: regionList
                                                   .map(
-                                                    (e) => DropdownMenuItem(child: Text(e["name"]), value: e["id"].toString()),
+                                                    (e) => DropdownMenuItem(
+                                                        child: Text(
+                                                          e["name"],
+                                                          style: TextStyle(fontSize: 13),
+                                                        ),
+                                                        value: e["id"].toString()),
                                                   )
                                                   .toList(),
                                               onChanged: (e) {
@@ -460,7 +467,7 @@ class RegisterForm extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                                 keyboardAppearance: Brightness.dark,
                                 controller: provider.passwordController,
-                                validator: (value) => value!.isEmpty ? "Введите пароль" : null,
+                                validator: (value) => value!.isEmpty || value.length < 6 ? "Enter correct email" : null,
                                 obscureText: provider.passwordObscure,
                                 textAlignVertical: TextAlignVertical.bottom,
                                 style: TextStyle(
@@ -606,9 +613,13 @@ class RegisterForm extends StatelessWidget {
                         ),
                         onTap: () async {
                           if (_formKey.currentState!.validate()) {
-                            await authProvider.register(body: provider.data);
+                            await authProvider.register(body: provider.data).then((value) async {
+                              //if value is true, then navigate to login page
+                              if (value) Get.offAllNamed("/welcome");
+                            });
                           } else {
-                            print("Not Validated");
+                            //if validation is false, then show error snackbar
+                            CustomSnackbars.error("Please, fill all fields correctly");
                           }
                         },
                         height: 40,
@@ -616,7 +627,6 @@ class RegisterForm extends StatelessWidget {
                       );
                     },
                   ),
-
                   SizedBox(height: 10),
                 ],
               ),

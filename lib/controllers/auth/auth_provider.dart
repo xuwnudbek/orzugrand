@@ -1,26 +1,51 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:orzugrand/controllers/domain/domains.dart';
 import 'package:orzugrand/controllers/http/http.dart';
+import 'package:orzugrand/utils/snackbar/custom_snackbars.dart';
 
 class AuthProvider extends ChangeNotifier {
-  FirebaseAuth auth = FirebaseAuth.instance;
   bool isLoading = false;
 
-  register({required Map<String, dynamic> body}) async {
+  Future<bool> register({required Map<String, dynamic> body}) async {
     isLoading = true;
     notifyListeners();
-    await DioHelper().post(url: "https://shop-bot.orzugrand.uz/api/register", data: body).then(
-      (value) async {
-        await auth.createUserWithEmailAndPassword(email: body["email"], password: body["password"]);
-      },
-    );
+    var res = await HttpHelper().post(url: Domains.register, data: body);
+    if (res.statusCode < 299) {
+      Hive.box("user").put("token", jsonDecode(res.body)["token"]);
+      CustomSnackbars.success("You have successfully registered");
+
+      isLoading = false;
+      notifyListeners();
+      return true;
+    } else {
+      CustomSnackbars.error("${res.body.contains("email") ? "Email already exists" : ""}");
+    }
+    isLoading = false;
+    notifyListeners();
+
+    return false;
   }
 
   login({required String email, required String password}) async {
-    return await auth.signInWithEmailAndPassword(email: email, password: password);
-  }
+    isLoading = true;
+    notifyListeners();
+    var res = await HttpHelper().post(url: Domains.login, data: {"email": email, "password": password});
+    if (res.statusCode < 299) {
+      Hive.box("user").put("token", jsonDecode(res.body)["token"]);
+      CustomSnackbars.success("You have successfully logged in");
 
-  logout() async {
-    return await auth.signOut();
+      isLoading = false;
+      notifyListeners();
+      return true;
+    } else {
+      print(res.body);
+      // CustomSnackbars.error("");
+    }
+    isLoading = false;
+    notifyListeners();
+    return false;
   }
 }
